@@ -64,14 +64,15 @@ const OurWork = () => {
                 <div className='flex items-center justify-center gap-4 max-w-7xl mx-auto h-96'>
                     {/* Card 1 - Black (outer left) */}
                     <div
-                        className={`bg-white hover:bg-gray-100 justify-between rounded-3xl overflow-hidden transition-all duration-1000 ease-in-out cursor-pointer h-full border-2 border-black ${hoveredCard === 1 ? 'w-8/12' : hoveredCard && hoveredCard !== 1 ? 'w-32' : 'w-32'
+                        className={`bg-black justify-between rounded-3xl overflow-hidden transition-all duration-1000 ease-in-out cursor-pointer h-full border-2 border-gray-800 hover:border-red-500 ${hoveredCard === 1 ? 'w-8/12' : hoveredCard && hoveredCard !== 1 ? 'w-32' : 'w-32'
                             }`}
                         onMouseEnter={() => setHoveredCard(1)}
                         onMouseLeave={() => setHoveredCard(null)}
+                        style={{ transitionDelay: hoveredCard === 1 ? '0ms' : '100ms' }}
                     >
                         {/* Shrinked State - Full Image Cover */}
                         {hoveredCard !== 1 && (
-                            <div className='w-full h-full bg-white rounded-3xl overflow-hidden transition-all duration-800 delay-75'>
+                            <div className='w-full h-full bg-black rounded-3xl overflow-hidden transition-all duration-800 delay-75'>
                                 <img
                                     src={Person}
                                     alt="Project Image"
@@ -82,9 +83,9 @@ const OurWork = () => {
 
                         {/* Expanded State - 70/30 Split */}
                         {hoveredCard === 1 && (
-                            <div className='w-full h-full flex'>
+                            <div className='w-full h-full flex transition-all duration-800'>
                                 {/* Content Area - 70% */}
-                                <div className='w-7/12 p-6 flex flex-col justify-center'>
+                                <div className='w-7/12 p-6 flex flex-col justify-center bg-white rounded-l-3xl transition-all duration-700 delay-100'>
                                     {/* Company Logo */}
                                     <div className='flex items-center gap-2 mb-6'>
                                         <div className='w-4 h-4 bg-red-500 rounded-full'></div>
@@ -122,11 +123,11 @@ const OurWork = () => {
                                 </div>
 
                                 {/* Image Area - 30% Portrait */}
-                                <div className='w-5/12 h-full bg-white rounded-r-3xl overflow-hidden'>
+                                <div className='w-5/12 h-full bg-black rounded-r-3xl overflow-hidden transition-all duration-700 delay-150'>
                                     <img
                                         src={Person}
                                         alt="Project Image"
-                                        className='w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300'
+                                        className='w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-600'
                                     />
                                 </div>
                             </div>
@@ -135,14 +136,15 @@ const OurWork = () => {
 
                     {/* Card 2 - White (left of center) */}
                     <div
-                        className={`bg-white hover:bg-gray-100 justify-between rounded-3xl overflow-hidden transition-all duration-1000 ease-in-out cursor-pointer h-full border-2 border-black ${hoveredCard === 2 ? 'w-8/12' : hoveredCard && hoveredCard !== 2 ? 'w-32' : 'w-32'
+                        className={`bg-white justify-between rounded-3xl overflow-hidden transition-all duration-1000 ease-in-out cursor-pointer h-full border-2 border-gray-200 hover:border-red-500 ${hoveredCard === 2 ? 'w-8/12' : hoveredCard && hoveredCard !== 2 ? 'w-32' : 'w-32'
                             }`}
                         onMouseEnter={() => setHoveredCard(2)}
                         onMouseLeave={() => setHoveredCard(null)}
+                        style={{ transitionDelay: hoveredCard === 2 ? '0ms' : '150ms' }}
                     >
                         {/* Shrinked State - Full Image Cover */}
                         {hoveredCard !== 2 && (
-                            <div className='w-full h-full bg-white rounded-3xl overflow-hidden transition-all duration-500'>
+                            <div className='w-full h-full bg-gray-100 rounded-3xl overflow-hidden transition-all duration-800 delay-100'>
                                 <img
                                     src={Person}
                                     alt="Project Image"
@@ -153,9 +155,9 @@ const OurWork = () => {
 
                         {/* Expanded State - 70/30 Split */}
                         {hoveredCard === 2 && (
-                            <div className='w-full h-full flex'>
+                            <div className='w-full h-full flex transition-all duration-800'>
                                 {/* Content Area - 70% */}
-                                <div className='w-7/12 p-6 flex flex-col justify-center'>
+                                <div className='w-7/12 p-6 flex flex-col justify-center transition-all duration-700 delay-100'>
                                     {/* Company Logo */}
                                     <div className='flex items-center gap-2 mb-6'>
                                         <div className='w-4 h-4 bg-red-500 rounded-full'></div>
@@ -193,11 +195,11 @@ const OurWork = () => {
                                 </div>
 
                                 {/* Image Area - 30% Portrait */}
-                                <div className='w-5/12 h-full bg-white rounded-r-3xl overflow-hidden'>
+                                <div className='w-5/12 h-full bg-white rounded-r-3xl overflow-hidden transition-all duration-700 delay-150'>
                                     <img
                                         src={Person}
                                         alt="Project Image"
-                                        className='w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300'
+                                        className='w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-600'
                                     />
                                 </div>
                             </div>
@@ -206,14 +208,15 @@ const OurWork = () => {
 
                     {/* Central Card (Card 3) - Red */}
                     <div
-                        className={`bg-white hover:bg-gray-100 justify-between rounded-3xl overflow-hidden transition-all duration-1000 ease-in-out cursor-pointer h-full border-2 border-black ${hoveredCard === 3 ? 'w-8/12' : hoveredCard && hoveredCard !== 3 ? 'w-32' : 'w-8/12'
+                        className={`bg-red-500 justify-between rounded-3xl overflow-hidden transition-all duration-1000 ease-in-out cursor-pointer h-full border-2 border-red-600 hover:border-red-700 ${hoveredCard === 3 ? 'w-8/12' : hoveredCard && hoveredCard !== 3 ? 'w-32' : 'w-8/12'
                             }`}
                         onMouseEnter={() => setHoveredCard(3)}
                         onMouseLeave={() => setHoveredCard(null)}
+                        style={{ transitionDelay: hoveredCard === 3 ? '0ms' : '0ms' }}
                     >
                         {/* Shrinked State - Full Image Cover */}
                         {hoveredCard && hoveredCard !== 3 && (
-                            <div className='w-full h-full bg-white rounded-3xl overflow-hidden transition-all duration-500'>
+                            <div className='w-full h-full bg-red-500 rounded-3xl overflow-hidden transition-all duration-800'>
                                 <img
                                     src={Person}
                                     alt="Project Image"
@@ -224,9 +227,9 @@ const OurWork = () => {
 
                         {/* Expanded State - 70/30 Split */}
                         {(!hoveredCard || hoveredCard === 3) && (
-                            <div className='w-full h-full flex'>
+                            <div className='w-full h-full flex transition-all duration-800'>
                                 {/* Content Area - 70% */}
-                                <div className='w-7/12 p-6 flex flex-col justify-center'>
+                                <div className='w-7/12 p-6 flex flex-col justify-center bg-white rounded-l-3xl transition-all duration-700 delay-100'>
                                     {/* Company Logo */}
                                     <div className='flex items-center gap-2 mb-6'>
                                         <div className='w-4 h-4 bg-red-500 rounded-full'></div>
@@ -264,11 +267,11 @@ const OurWork = () => {
                                 </div>
 
                                 {/* Image Area - 30% Portrait */}
-                                <div className='w-5/12 h-full bg-white rounded-r-3xl overflow-hidden'>
+                                <div className='w-5/12 h-full bg-red-500 rounded-r-3xl overflow-hidden transition-all duration-700 delay-150'>
                                     <img
                                         src={Person}
                                         alt="Project Image"
-                                        className='w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300'
+                                        className='w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-600'
                                     />
                                 </div>
                             </div>
@@ -277,14 +280,15 @@ const OurWork = () => {
 
                     {/* Card 4 - White (right of center) */}
                     <div
-                        className={`bg-white hover:bg-gray-100 justify-between rounded-3xl overflow-hidden transition-all duration-1000 ease-in-out cursor-pointer h-full border-2 border-black ${hoveredCard === 4 ? 'w-8/12' : hoveredCard && hoveredCard !== 4 ? 'w-32' : 'w-32'
+                        className={`bg-white justify-between rounded-3xl overflow-hidden transition-all duration-1000 ease-in-out cursor-pointer h-full border-2 border-gray-200 hover:border-red-500 ${hoveredCard === 4 ? 'w-8/12' : hoveredCard && hoveredCard !== 4 ? 'w-32' : 'w-32'
                             }`}
                         onMouseEnter={() => setHoveredCard(4)}
                         onMouseLeave={() => setHoveredCard(null)}
+                        style={{ transitionDelay: hoveredCard === 4 ? '0ms' : '200ms' }}
                     >
                         {/* Shrinked State - Full Image Cover */}
                         {hoveredCard !== 4 && (
-                            <div className='w-full h-full bg-white rounded-3xl overflow-hidden transition-all duration-500'>
+                            <div className='w-full h-full bg-gray-100 rounded-3xl overflow-hidden transition-all duration-800 delay-125'>
                                 <img
                                     src={Person}
                                     alt="Project Image"
@@ -295,9 +299,9 @@ const OurWork = () => {
 
                         {/* Expanded State - 70/30 Split */}
                         {hoveredCard === 4 && (
-                            <div className='w-full h-full flex'>
+                            <div className='w-full h-full flex transition-all duration-800'>
                                 {/* Content Area - 70% */}
-                                <div className='w-7/12 p-6 flex flex-col justify-center'>
+                                <div className='w-7/12 p-6 flex flex-col justify-center transition-all duration-700 delay-100'>
                                     {/* Company Logo */}
                                     <div className='flex items-center gap-2 mb-6'>
                                         <div className='w-4 h-4 bg-red-500 rounded-full'></div>
@@ -335,11 +339,11 @@ const OurWork = () => {
                                 </div>
 
                                 {/* Image Area - 30% Portrait */}
-                                <div className='w-5/12 h-full bg-white rounded-r-3xl overflow-hidden'>
+                                <div className='w-5/12 h-full bg-white rounded-r-3xl overflow-hidden transition-all duration-700 delay-150'>
                                     <img
                                         src={Person}
                                         alt="Project Image"
-                                        className='w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300'
+                                        className='w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-600'
                                     />
                                 </div>
                             </div>
@@ -348,14 +352,15 @@ const OurWork = () => {
 
                     {/* Card 5 - Black (outer right) */}
                     <div
-                        className={`bg-white hover:bg-gray-100 justify-between rounded-3xl overflow-hidden transition-all duration-1000 ease-in-out cursor-pointer h-full border-2 border-black ${hoveredCard === 5 ? 'w-8/12' : hoveredCard && hoveredCard !== 5 ? 'w-32' : 'w-32'
+                        className={`bg-black justify-between rounded-3xl overflow-hidden transition-all duration-1000 ease-in-out cursor-pointer h-full border-2 border-gray-800 hover:border-red-500 ${hoveredCard === 5 ? 'w-8/12' : hoveredCard && hoveredCard !== 5 ? 'w-32' : 'w-32'
                             }`}
                         onMouseEnter={() => setHoveredCard(5)}
                         onMouseLeave={() => setHoveredCard(null)}
+                        style={{ transitionDelay: hoveredCard === 5 ? '0ms' : '250ms' }}
                     >
                         {/* Shrinked State - Full Image Cover */}
                         {hoveredCard !== 5 && (
-                            <div className='w-full h-full bg-white rounded-3xl overflow-hidden transition-all duration-500'>
+                            <div className='w-full h-full bg-black rounded-3xl overflow-hidden transition-all duration-800 delay-150'>
                                 <img
                                     src={Person}
                                     alt="Project Image"
@@ -366,9 +371,9 @@ const OurWork = () => {
 
                         {/* Expanded State - 70/30 Split */}
                         {hoveredCard === 5 && (
-                            <div className='w-full h-full flex'>
+                            <div className='w-full h-full flex transition-all duration-800'>
                                 {/* Content Area - 70% */}
-                                <div className='w-7/12 p-6 flex flex-col justify-center'>
+                                <div className='w-7/12 p-6 flex flex-col justify-center bg-white rounded-l-3xl transition-all duration-700 delay-100'>
                                     {/* Company Logo */}
                                     <div className='flex items-center gap-2 mb-6'>
                                         <div className='w-4 h-4 bg-red-500 rounded-full'></div>
@@ -406,18 +411,17 @@ const OurWork = () => {
                                 </div>
 
                                 {/* Image Area - 30% Portrait */}
-                                <div className='w-5/12 h-full bg-white rounded-r-3xl overflow-hidden'>
+                                <div className='w-5/12 h-full bg-black rounded-r-3xl overflow-hidden transition-all duration-700 delay-150'>
                                     <img
                                         src={Person}
                                         alt="Project Image"
-                                        className='w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300'
+                                        className='w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-600'
                                     />
                                 </div>
                             </div>
                         )}
                     </div>
                 </div>
-
 
                 <div className='text-center mt-12'>
                     <button className='border-2 border-black text-black px-8 py-3 rounded-full font-medium hover:bg-black hover:text-white transition-all duration-300 uppercase tracking-wide'>
