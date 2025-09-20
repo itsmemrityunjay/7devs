@@ -8,6 +8,7 @@ import OurWork from '../components/OurWork'
 import Clients from '../components/Clients'
 import Blogs from '../components/Blogs'
 import Footer from '../components/Footer'
+import Scroller from '../components/Scroller'
 
 const Home = () => {
     return (
@@ -18,6 +19,7 @@ const Home = () => {
             <USPElaboration />
             <Services />
             <OurWork />
+            <Scroller />
             <Clients />
             <Blogs />
             <Footer />
