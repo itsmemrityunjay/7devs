@@ -1,80 +1,208 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
+import Person from '../assets/person.jpg'
+import LogoImage from '../assets/Logo.png'
+import LogoGlowing from '../assets/LogoGlowing.png'
+import { ImageWithFallback } from './figma/ImageWithFallback'
 
 const Blogs = () => {
+    const scrollRef = useRef(null);
+    const [activeSlide, setActiveSlide] = useState(0);
     const blogPosts = [
+        {
+            title: "WRITE YOUR BIO LIKE A PRO",
+            excerpt: "Talking about yourself can feel weird. Lucky for you, I've made a career out of it. I'll teach you how to showcase your experience, how to embellish without lying, and generate interest that makes you money.",
+            date: "March 15, 2024",
+            category: "eGuide",
+            readTime: "5 min read",
+            image: Person
+        },
+        {
+            title: "GOALS: HOW TO SET & GET THEM",
+            excerpt: "Learn everything I know about goal setting, from finding your vision to tactical planning, and, of course, how to get the shit actually done.",
+            date: "March 10, 2024",
+            category: "eGuide",
+            readTime: "7 min read",
+            image: LogoGlowing
+        },
         {
             title: "The Future of Digital Branding in 2024",
             excerpt: "Exploring emerging trends and technologies that are reshaping how brands connect with their audiences in the digital landscape.",
-            date: "March 15, 2024",
-            category: "Branding",
-            readTime: "5 min read",
-            image: "📝"
-        },
-        {
-            title: "Building User-Centric Web Experiences",
-            excerpt: "A comprehensive guide to creating websites that not only look great but also provide exceptional user experiences.",
-            date: "March 10, 2024",
-            category: "Web Design",
-            readTime: "7 min read",
-            image: "💻"
-        },
-        {
-            title: "Social Media Strategy That Actually Works",
-            excerpt: "Proven tactics and strategies for building a strong social media presence that drives real business results.",
             date: "March 5, 2024",
-            category: "Digital Marketing",
+            category: "eGuide",
             readTime: "6 min read",
-            image: "📱"
+            image: LogoImage
         }
     ]
 
     return (
-        <section id="blogs" className='py-20 bg-slate-900'>
-            <div className='container mx-auto px-4'>
-                <div className='text-center mb-16'>
-                    <h2 className='text-4xl md:text-5xl font-bold text-white mb-4'>
-                        Latest Insights
-                    </h2>
-                    <p className='text-xl text-gray-300 max-w-2xl mx-auto'>
-                        Stay updated with the latest trends, tips, and insights from the digital world
-                    </p>
+        <section id="blogs" className='py-12 md:py-16 bg-black overflow-x-hidden'>
+            <div className='container mx-auto px-4 md:px-8'>
+                <div className='relative mb-10 md:mb-12'>
+                    <div className='flex flex-col items-start mb-4'>
+                        <h3 className='text-xl font-normal text-white tracking-normal'>DOWNLOAD</h3>
+                        <div className='flex items-baseline relative'>
+                            <h2 className='text-7xl md:text-8xl font-bold text-white tracking-tighter leading-none'>
+                                RESOURCES
+                            </h2>
+                        </div>
+                    </div>
+                    
+                    {/* FREE text positioned absolutely */}
+                    <div className='absolute top-0 md:top-0 right-[50%] md:right-auto md:left-[55%] text-3xl md:text-4xl font-normal text-white tracking-normal'>
+                        FREE
+                    </div>
+                    
+                    {/* Arrow decoration */}
+                    <div className='absolute right-[15%] top-6 hidden md:block'>
+                        <div className='w-32 h-0.5 bg-red-500 transform rotate-45'></div>
+                    </div>
+                    
+                    {/* Navigation Arrows */}
+                    <div className='absolute right-0 top-1/2 -translate-y-1/2 flex space-x-4 md:space-x-6'>
+                        <button 
+                            onClick={() => {
+                                if (scrollRef.current) {
+                                    // For mobile, scroll by individual card width
+                                    const isMobile = window.innerWidth < 768;
+                                    const scrollAmount = isMobile 
+                                        ? scrollRef.current.scrollLeft - scrollRef.current.querySelector('article').offsetWidth
+                                        : scrollRef.current.scrollLeft - scrollRef.current.clientWidth;
+                                    
+                                    scrollRef.current.scrollTo({
+                                        left: Math.max(0, scrollAmount), // Prevent scrolling past the beginning
+                                        behavior: 'smooth'
+                                    });
+                                    
+                                    const newActiveSlide = Math.max(0, activeSlide - 1);
+                                    setActiveSlide(newActiveSlide);
+                                }
+                            }}
+                            className='w-10 h-10 md:w-12 md:h-12 border-2 border-red-500 flex items-center justify-center hover:bg-red-500 hover:border-red-500 transition-all duration-300 focus:outline-none'
+                            aria-label="Previous slide"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6 text-red-500 hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                        <button 
+                            onClick={() => {
+                                if (scrollRef.current) {
+                                    // For mobile, scroll by individual card width
+                                    const isMobile = window.innerWidth < 768;
+                                    const scrollAmount = isMobile 
+                                        ? scrollRef.current.scrollLeft + scrollRef.current.querySelector('article').offsetWidth
+                                        : scrollRef.current.scrollLeft + scrollRef.current.clientWidth;
+                                    
+                                    const maxScroll = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
+                                    
+                                    scrollRef.current.scrollTo({
+                                        left: Math.min(maxScroll, scrollAmount), // Prevent scrolling past the end
+                                        behavior: 'smooth'
+                                    });
+                                    
+                                    const newActiveSlide = Math.min(blogPosts.length - 1, activeSlide + 1);
+                                    setActiveSlide(newActiveSlide);
+                                }
+                            }}
+                            className='w-10 h-10 md:w-12 md:h-12 border-2 border-red-500 flex items-center justify-center hover:bg-red-500 hover:border-red-500 transition-all duration-300 focus:outline-none'
+                            aria-label="Next slide"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6 text-red-500 hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
 
-                <div className='grid md:grid-cols-3 gap-8 max-w-6xl mx-auto'>
-                    {blogPosts.map((post, index) => (
-                        <article key={index} className='bg-gray-800 rounded-xl overflow-hidden hover:bg-gray-700 transition-colors duration-300 border border-gray-700'>
-                            <div className='p-6'>
-                                <div className='text-6xl mb-4 text-center'>
-                                    {post.image}
-                                </div>
-                                <div className='mb-3'>
-                                    <span className='text-sm font-semibold text-purple-400 uppercase tracking-wide'>
-                                        {post.category}
-                                    </span>
-                                    <div className='flex items-center text-sm text-gray-400 mt-1'>
-                                        <span>{post.date}</span>
-                                        <span className='mx-2'>•</span>
-                                        <span>{post.readTime}</span>
+                <div className="relative mb-10 md:mb-12">
+                    {/* Horizontal scrolling container */}
+                    <div 
+                        ref={scrollRef}
+                        className="flex overflow-x-auto gap-0 pb-6 snap-x snap-mandatory hide-scrollbar md:pl-0" 
+                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                    >
+                        {blogPosts.map((post, index) => (
+                            <article 
+                                key={index} 
+                                className={`flex-shrink-0 w-full md:w-1/2 snap-center ${index > 0 ? 'border-l border-red-800/30' : ''}`}
+                            >
+                                <div className="bg-transparent overflow-hidden h-full px-4 md:px-8">
+                                    {/* Card image/thumbnail area with actual image */}
+                                    <div className="w-full aspect-[4/3] bg-gray-800 overflow-hidden">
+                                        <ImageWithFallback 
+                                            src={post.image} 
+                                            alt={post.title}
+                                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                                            fallback="https://via.placeholder.com/600x400/FF0000/FFFFFF/?text=7Devs+Resource"
+                                        />
+                                    </div>
+                                    
+                                    <div className="py-4">
+                                        {/* Category tag */}
+                                        <div className="mb-3 flex items-center">
+                                            <span className="bg-red-500 text-white text-xs px-3 py-1 rounded-full font-medium">
+                                                {post.category}
+                                            </span>
+                                            <span className="ml-2 text-white text-xs font-normal">
+                                                Free
+                                            </span>
+                                        </div>
+                                        
+                                        {/* Title */}
+                                        <h3 className="text-xl md:text-2xl font-bold text-red-500 mb-3 uppercase leading-tight tracking-normal">
+                                            {post.title}
+                                        </h3>
+                                        
+                                        {/* Excerpt */}
+                                        <p className="text-gray-300 text-sm mb-6 line-clamp-3 leading-relaxed max-w-lg">
+                                            {post.excerpt}
+                                        </p>
+                                        
+                                        {/* CTA Button */}
+                                        <button className="border-2 border-white text-white px-4 py-1.5 text-sm font-medium hover:bg-red-500 hover:border-red-500 hover:text-white transition-all duration-300 uppercase tracking-wide">
+                                            Get Guide
+                                        </button>
                                     </div>
                                 </div>
-                                <h3 className='text-xl font-bold text-white mb-3 leading-tight'>
-                                    {post.title}
-                                </h3>
-                                <p className='text-gray-300 leading-relaxed mb-4'>
-                                    {post.excerpt}
-                                </p>
-                                <button className='text-purple-400 hover:text-purple-300 font-semibold transition-colors duration-200'>
-                                    Read More →
-                                </button>
-                            </div>
-                        </article>
-                    ))}
+                            </article>
+                        ))}
+                    </div>
                 </div>
+                
+                {/* Add custom CSS to hide scrollbar but maintain functionality */}
+                <style dangerouslySetInnerHTML={{ __html: `
+                    .hide-scrollbar::-webkit-scrollbar {
+                        display: none;
+                    }
+                `}} />
 
-                <div className='text-center mt-12'>
-                    <button className='bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105'>
-                        View All Posts
-                    </button>
+                {/* Navigation dots/indicators - placed more subtly at bottom */}
+                <div className="flex justify-center gap-4 mt-4">
+                    {blogPosts.map((_, index) => {
+                        // Function to scroll to specific slide
+                        const scrollToSlide = () => {
+                            if (scrollRef.current) {
+                                const cardWidth = scrollRef.current.querySelector('article').offsetWidth;
+                                const gap = 0; // No gap in our current design
+                                
+                                scrollRef.current.scrollTo({
+                                    left: index * cardWidth,
+                                    behavior: 'smooth'
+                                });
+                                
+                                setActiveSlide(index);
+                            }
+                        };
+                        
+                        return (
+                            <button
+                                key={index}
+                                onClick={scrollToSlide}
+                                className={`w-2 h-2 rounded-full ${index === activeSlide ? 'bg-red-500' : 'bg-gray-600 hover:bg-red-300'} transition-colors`}
+                                aria-label={`Go to slide ${index + 1}`}
+                            />
+                        );
+                    })}
                 </div>
             </div>
         </section>
