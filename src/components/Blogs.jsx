@@ -35,20 +35,20 @@ const Blogs = () => {
     ]
 
     return (
-        <section id="blogs" className='py-12 md:py-16 bg-black overflow-x-hidden'>
+        <section id="blogs" className='py-8 md:py-10 bg-black overflow-x-hidden'>
             <div className='container mx-auto px-4 md:px-8'>
-                <div className='relative mb-10 md:mb-12'>
-                    <div className='flex flex-col items-start mb-4'>
-                        <h3 className='text-xl font-normal text-white tracking-normal'>DOWNLOAD</h3>
+                <div className='relative mb-6 md:mb-8'>
+                    <div className='flex flex-col items-start mb-2'>
+                        <h3 className='text-lg font-normal text-white tracking-normal'>DOWNLOAD</h3>
                         <div className='flex items-baseline relative'>
-                            <h2 className='text-7xl md:text-8xl font-bold text-white tracking-tighter leading-none'>
+                            <h2 className='text-6xl md:text-7xl font-bold text-white tracking-tighter leading-none'>
                                 RESOURCES
                             </h2>
                         </div>
                     </div>
                     
                     {/* FREE text positioned absolutely */}
-                    <div className='absolute top-0 md:top-0 right-[50%] md:right-auto md:left-[55%] text-3xl md:text-4xl font-normal text-white tracking-normal'>
+                    <div className='absolute top-0 md:top-0 right-[50%] md:right-auto md:left-[55%] text-2xl md:text-3xl font-normal text-white tracking-normal'>
                         FREE
                     </div>
                     
@@ -58,7 +58,7 @@ const Blogs = () => {
                     </div>
                     
                     {/* Navigation Arrows */}
-                    <div className='absolute right-0 top-1/2 -translate-y-1/2 flex space-x-4 md:space-x-6'>
+                    <div className='absolute right-0 top-1/2 -translate-y-1/2 flex space-x-3 md:space-x-4'>
                         <button 
                             onClick={() => {
                                 if (scrollRef.current) {
@@ -77,10 +77,10 @@ const Blogs = () => {
                                     setActiveSlide(newActiveSlide);
                                 }
                             }}
-                            className='w-10 h-10 md:w-12 md:h-12 border-2 border-red-500 flex items-center justify-center hover:bg-red-500 hover:border-red-500 transition-all duration-300 focus:outline-none'
+                            className='w-8 h-8 md:w-10 md:h-10 border-2 border-red-500 flex items-center justify-center hover:bg-red-500 hover:border-red-500 transition-all duration-300 focus:outline-none'
                             aria-label="Previous slide"
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6 text-red-500 hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5 text-red-500 hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                             </svg>
                         </button>
@@ -104,21 +104,21 @@ const Blogs = () => {
                                     setActiveSlide(newActiveSlide);
                                 }
                             }}
-                            className='w-10 h-10 md:w-12 md:h-12 border-2 border-red-500 flex items-center justify-center hover:bg-red-500 hover:border-red-500 transition-all duration-300 focus:outline-none'
+                            className='w-8 h-8 md:w-10 md:h-10 border-2 border-red-500 flex items-center justify-center hover:bg-red-500 hover:border-red-500 transition-all duration-300 focus:outline-none'
                             aria-label="Next slide"
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6 text-red-500 hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5 text-red-500 hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
                         </button>
                     </div>
                 </div>
 
-                <div className="relative mb-10 md:mb-12">
+                <div className="relative mb-6 md:mb-8">
                     {/* Horizontal scrolling container */}
                     <div 
                         ref={scrollRef}
-                        className="flex overflow-x-auto gap-0 pb-6 snap-x snap-mandatory hide-scrollbar md:pl-0" 
+                        className="flex overflow-x-auto gap-0 pb-4 snap-x snap-mandatory hide-scrollbar md:pl-0" 
                         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                     >
                         {blogPosts.map((post, index) => (
@@ -128,7 +128,7 @@ const Blogs = () => {
                             >
                                 <div className="bg-transparent overflow-hidden h-full px-4 md:px-8">
                                     {/* Card image/thumbnail area with actual image */}
-                                    <div className="w-full aspect-[4/3] bg-gray-800 overflow-hidden">
+                                    <div className="w-full aspect-[16/9] bg-gray-800 overflow-hidden">
                                         <ImageWithFallback 
                                             src={post.image} 
                                             alt={post.title}
@@ -137,9 +137,9 @@ const Blogs = () => {
                                         />
                                     </div>
                                     
-                                    <div className="py-4">
+                                    <div className="py-2 md:py-3">
                                         {/* Category tag */}
-                                        <div className="mb-3 flex items-center">
+                                        <div className="mb-2 flex items-center">
                                             <span className="bg-red-500 text-white text-xs px-3 py-1 rounded-full font-medium">
                                                 {post.category}
                                             </span>
@@ -149,17 +149,17 @@ const Blogs = () => {
                                         </div>
                                         
                                         {/* Title */}
-                                        <h3 className="text-xl md:text-2xl font-bold text-red-500 mb-3 uppercase leading-tight tracking-normal">
+                                        <h3 className="text-lg md:text-xl font-bold text-red-500 mb-2 uppercase leading-tight tracking-normal">
                                             {post.title}
                                         </h3>
                                         
                                         {/* Excerpt */}
-                                        <p className="text-gray-300 text-sm mb-6 line-clamp-3 leading-relaxed max-w-lg">
+                                        <p className="text-gray-300 text-sm mb-4 line-clamp-2 leading-relaxed max-w-lg">
                                             {post.excerpt}
                                         </p>
                                         
                                         {/* CTA Button */}
-                                        <button className="border-2 border-white text-white px-4 py-1.5 text-sm font-medium hover:bg-red-500 hover:border-red-500 hover:text-white transition-all duration-300 uppercase tracking-wide">
+                                        <button className="border-2 border-white text-white px-3 py-1 text-xs font-medium hover:bg-red-500 hover:border-red-500 hover:text-white transition-all duration-300 uppercase tracking-wide">
                                             Get Guide
                                         </button>
                                     </div>
