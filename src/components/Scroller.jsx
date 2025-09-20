@@ -63,7 +63,7 @@ const Scroller = () => {
         <div className="scroller" ref={scrollerRef1}>
           <div className="scroller-content" ref={contentRef1}>
             <span className="number">02</span>
-            <span className="text">Our work</span>
+            <span className="text">Let's Connect</span>
           </div>
         </div>
       </div>

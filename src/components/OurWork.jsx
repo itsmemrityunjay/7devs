@@ -60,12 +60,12 @@ const OurWork = () => {
                     </p>
                 </div>
 
-                {/* Interactive Profile Cards Layout - All in One Row */}
-                <div className='flex items-center justify-center gap-4 max-w-7xl mx-auto h-96'>
+                {/* Interactive Profile Cards Layout - Row on desktop, Column on mobile */}
+                <div className='flex flex-col md:flex-row items-center justify-center gap-4 max-w-7xl mx-auto md:h-96'>
                     {/* Card 1 - Black (outer left) */}
                     <div
-                        className={`bg-white hover:bg-gray-100 justify-between rounded-3xl overflow-hidden transition-all duration-1000 ease-in-out cursor-pointer h-full border-2 border-black ${hoveredCard === 1 ? 'w-8/12' : hoveredCard && hoveredCard !== 1 ? 'w-32' : 'w-32'
-                            }`}
+                        className={`bg-white hover:bg-gray-100 justify-between rounded-3xl overflow-hidden transition-all duration-1000 ease-in-out cursor-pointer ${hoveredCard === 1 ? 'w-full md:w-8/12 h-96 md:h-full mb-4 md:mb-0' : hoveredCard && hoveredCard !== 1 ? 'w-full md:w-32 h-24 md:h-full mb-4 md:mb-0' : 'w-full md:w-32 h-24 md:h-full mb-4 md:mb-0'
+                            } border-2 border-black`}
                         onMouseEnter={() => setHoveredCard(1)}
                         onMouseLeave={() => setHoveredCard(null)}
                     >
@@ -82,9 +82,9 @@ const OurWork = () => {
 
                         {/* Expanded State - 70/30 Split */}
                         {hoveredCard === 1 && (
-                            <div className='w-full h-full flex'>
-                                {/* Content Area - 70% */}
-                                <div className='w-7/12 p-6 flex flex-col justify-center'>
+                            <div className='w-full h-full flex flex-col md:flex-row'>
+                                {/* Content Area - 70% on desktop, 100% on mobile */}
+                                <div className='w-full md:w-7/12 p-4 md:p-6 flex flex-col justify-center'>
                                     {/* Company Logo */}
                                     <div className='flex items-center gap-2 mb-6'>
                                         <div className='w-4 h-4 bg-red-500 rounded-full'></div>
@@ -92,14 +92,14 @@ const OurWork = () => {
                                     </div>
 
                                     {/* Project Title */}
-                                    <div className='mb-6'>
-                                        <h3 className='text-3xl font-bold mb-2 text-red-500'>{projects[0].title}</h3>
-                                        <p className='text-base font-medium text-black'>Featured Project</p>
+                                    <div className='mb-4 md:mb-6'>
+                                        <h3 className='text-2xl md:text-3xl font-bold mb-2 text-red-500'>{projects[0].title}</h3>
+                                        <p className='text-sm md:text-base font-medium text-black'>Featured Project</p>
                                     </div>
 
                                     {/* Project Description */}
-                                    <blockquote className='mb-6'>
-                                        <p className='text-sm leading-relaxed mb-4 text-gray-700'>
+                                    <blockquote className='mb-4 md:mb-6'>
+                                        <p className='text-xs md:text-sm leading-relaxed mb-2 md:mb-4 text-gray-700'>
                                             {projects[0].description}
                                         </p>
                                         <footer>
@@ -122,7 +122,7 @@ const OurWork = () => {
                                 </div>
 
                                 {/* Image Area - 30% Portrait */}
-                                <div className='w-5/12 h-full bg-white rounded-r-3xl overflow-hidden'>
+                                <div className='md:w-5/12 w-full h-full bg-white rounded-r-3xl overflow-hidden'>
                                     <img
                                         src={Person}
                                         alt="Project Image"
@@ -135,8 +135,8 @@ const OurWork = () => {
 
                     {/* Card 2 - White (left of center) */}
                     <div
-                        className={`bg-white hover:bg-gray-100 justify-between rounded-3xl overflow-hidden transition-all duration-1000 ease-in-out cursor-pointer h-full border-2 border-black ${hoveredCard === 2 ? 'w-8/12' : hoveredCard && hoveredCard !== 2 ? 'w-32' : 'w-32'
-                            }`}
+                        className={`bg-white hover:bg-gray-100 justify-between rounded-3xl overflow-hidden transition-all duration-1000 ease-in-out cursor-pointer ${hoveredCard === 2 ? 'w-full md:w-8/12 h-96 md:h-full mb-4 md:mb-0' : hoveredCard && hoveredCard !== 2 ? 'w-full md:w-32 h-24 md:h-full mb-4 md:mb-0' : 'w-full md:w-32 h-24 md:h-full mb-4 md:mb-0'
+                            } border-2 border-black`}
                         onMouseEnter={() => setHoveredCard(2)}
                         onMouseLeave={() => setHoveredCard(null)}
                     >
@@ -153,9 +153,9 @@ const OurWork = () => {
 
                         {/* Expanded State - 70/30 Split */}
                         {hoveredCard === 2 && (
-                            <div className='w-full h-full flex'>
-                                {/* Content Area - 70% */}
-                                <div className='w-7/12 p-6 flex flex-col justify-center'>
+                            <div className='w-full h-full flex flex-col md:flex-row'>
+                                {/* Content Area - Full width on mobile, 70% on desktop */}
+                                <div className='w-full md:w-7/12 p-4 md:p-6 flex flex-col justify-center'>
                                     {/* Company Logo */}
                                     <div className='flex items-center gap-2 mb-6'>
                                         <div className='w-4 h-4 bg-red-500 rounded-full'></div>
@@ -163,14 +163,14 @@ const OurWork = () => {
                                     </div>
 
                                     {/* Project Title */}
-                                    <div className='mb-6'>
-                                        <h3 className='text-3xl font-bold mb-2 text-red-500'>{projects[1].title}</h3>
-                                        <p className='text-base font-medium text-black'>Creative Solution</p>
+                                    <div className='mb-4 md:mb-6'>
+                                        <h3 className='text-2xl md:text-3xl font-bold mb-2 text-red-500'>{projects[1].title}</h3>
+                                        <p className='text-sm md:text-base font-medium text-black'>Creative Solution</p>
                                     </div>
 
                                     {/* Project Description */}
-                                    <blockquote className='mb-6'>
-                                        <p className='text-sm leading-relaxed mb-4 text-gray-700'>
+                                    <blockquote className='mb-4 md:mb-6'>
+                                        <p className='text-xs md:text-sm leading-relaxed mb-2 md:mb-4 text-gray-700'>
                                             {projects[1].description}
                                         </p>
                                         <footer>
@@ -192,8 +192,8 @@ const OurWork = () => {
                                     </div>
                                 </div>
 
-                                {/* Image Area - 30% Portrait */}
-                                <div className='w-5/12 h-full bg-white rounded-r-3xl overflow-hidden'>
+                                {/* Image Area - Full width on mobile, 30% on desktop */}
+                                <div className='w-full md:w-5/12 h-48 md:h-full bg-white md:rounded-r-3xl overflow-hidden'>
                                     <img
                                         src={Person}
                                         alt="Project Image"
@@ -206,8 +206,8 @@ const OurWork = () => {
 
                     {/* Central Card (Card 3) - Red */}
                     <div
-                        className={`bg-white hover:bg-gray-100 justify-between rounded-3xl overflow-hidden transition-all duration-1000 ease-in-out cursor-pointer h-full border-2 border-black ${hoveredCard === 3 ? 'w-8/12' : hoveredCard && hoveredCard !== 3 ? 'w-32' : 'w-8/12'
-                            }`}
+                        className={`bg-white hover:bg-gray-100 justify-between rounded-3xl overflow-hidden transition-all duration-1000 ease-in-out cursor-pointer ${hoveredCard === 3 ? 'w-full md:w-8/12 h-96 md:h-full mb-4 md:mb-0' : hoveredCard && hoveredCard !== 3 ? 'w-full md:w-32 h-24 md:h-full mb-4 md:mb-0' : 'w-full md:w-8/12 h-96 md:h-full mb-4 md:mb-0'
+                            } border-2 border-black`}
                         onMouseEnter={() => setHoveredCard(3)}
                         onMouseLeave={() => setHoveredCard(null)}
                     >
@@ -224,9 +224,9 @@ const OurWork = () => {
 
                         {/* Expanded State - 70/30 Split */}
                         {(!hoveredCard || hoveredCard === 3) && (
-                            <div className='w-full h-full flex'>
-                                {/* Content Area - 70% */}
-                                <div className='w-7/12 p-6 flex flex-col justify-center'>
+                            <div className='w-full h-full flex flex-col md:flex-row'>
+                                {/* Content Area - Full width on mobile, 70% on desktop */}
+                                <div className='w-full md:w-7/12 p-4 md:p-6 flex flex-col justify-center'>
                                     {/* Company Logo */}
                                     <div className='flex items-center gap-2 mb-6'>
                                         <div className='w-4 h-4 bg-red-500 rounded-full'></div>
@@ -234,14 +234,14 @@ const OurWork = () => {
                                     </div>
 
                                     {/* Project Title */}
-                                    <div className='mb-6'>
-                                        <h3 className='text-3xl font-bold mb-2 text-red-500'>{projects[2].title}</h3>
-                                        <p className='text-base font-medium text-black'>Innovation Project</p>
+                                    <div className='mb-4 md:mb-6'>
+                                        <h3 className='text-2xl md:text-3xl font-bold mb-2 text-red-500'>{projects[2].title}</h3>
+                                        <p className='text-sm md:text-base font-medium text-black'>Innovation Project</p>
                                     </div>
 
                                     {/* Project Description */}
-                                    <blockquote className='mb-6'>
-                                        <p className='text-sm leading-relaxed mb-4 text-gray-700'>
+                                    <blockquote className='mb-4 md:mb-6'>
+                                        <p className='text-xs md:text-sm leading-relaxed mb-2 md:mb-4 text-gray-700'>
                                             {projects[2].description}
                                         </p>
                                         <footer>
@@ -263,8 +263,8 @@ const OurWork = () => {
                                     </div>
                                 </div>
 
-                                {/* Image Area - 30% Portrait */}
-                                <div className='w-5/12 h-full bg-white rounded-r-3xl overflow-hidden'>
+                                {/* Image Area - Full width on mobile, 30% on desktop */}
+                                <div className='w-full md:w-5/12 h-48 md:h-full bg-white md:rounded-r-3xl overflow-hidden'>
                                     <img
                                         src={Person}
                                         alt="Project Image"
@@ -277,8 +277,8 @@ const OurWork = () => {
 
                     {/* Card 4 - White (right of center) */}
                     <div
-                        className={`bg-white hover:bg-gray-100 justify-between rounded-3xl overflow-hidden transition-all duration-1000 ease-in-out cursor-pointer h-full border-2 border-black ${hoveredCard === 4 ? 'w-8/12' : hoveredCard && hoveredCard !== 4 ? 'w-32' : 'w-32'
-                            }`}
+                        className={`bg-white hover:bg-gray-100 justify-between rounded-3xl overflow-hidden transition-all duration-1000 ease-in-out cursor-pointer ${hoveredCard === 4 ? 'w-full md:w-8/12 h-96 md:h-full mb-4 md:mb-0' : hoveredCard && hoveredCard !== 4 ? 'w-full md:w-32 h-24 md:h-full mb-4 md:mb-0' : 'w-full md:w-32 h-24 md:h-full mb-4 md:mb-0'
+                            } border-2 border-black`}
                         onMouseEnter={() => setHoveredCard(4)}
                         onMouseLeave={() => setHoveredCard(null)}
                     >
@@ -295,9 +295,9 @@ const OurWork = () => {
 
                         {/* Expanded State - 70/30 Split */}
                         {hoveredCard === 4 && (
-                            <div className='w-full h-full flex'>
-                                {/* Content Area - 70% */}
-                                <div className='w-7/12 p-6 flex flex-col justify-center'>
+                            <div className='w-full h-full flex flex-col md:flex-row'>
+                                {/* Content Area - Full width on mobile, 70% on desktop */}
+                                <div className='w-full md:w-7/12 p-4 md:p-6 flex flex-col justify-center'>
                                     {/* Company Logo */}
                                     <div className='flex items-center gap-2 mb-6'>
                                         <div className='w-4 h-4 bg-red-500 rounded-full'></div>
@@ -305,14 +305,14 @@ const OurWork = () => {
                                     </div>
 
                                     {/* Project Title */}
-                                    <div className='mb-6'>
-                                        <h3 className='text-3xl font-bold mb-2 text-red-500'>{projects[3].title}</h3>
-                                        <p className='text-base font-medium text-black'>Growth Strategy</p>
+                                    <div className='mb-4 md:mb-6'>
+                                        <h3 className='text-2xl md:text-3xl font-bold mb-2 text-red-500'>{projects[3].title}</h3>
+                                        <p className='text-sm md:text-base font-medium text-black'>Growth Strategy</p>
                                     </div>
 
                                     {/* Project Description */}
-                                    <blockquote className='mb-6'>
-                                        <p className='text-sm leading-relaxed mb-4 text-gray-700'>
+                                    <blockquote className='mb-4 md:mb-6'>
+                                        <p className='text-xs md:text-sm leading-relaxed mb-2 md:mb-4 text-gray-700'>
                                             {projects[3].description}
                                         </p>
                                         <footer>
@@ -334,8 +334,8 @@ const OurWork = () => {
                                     </div>
                                 </div>
 
-                                {/* Image Area - 30% Portrait */}
-                                <div className='w-5/12 h-full bg-white rounded-r-3xl overflow-hidden'>
+                                {/* Image Area - Full width on mobile, 30% on desktop */}
+                                <div className='w-full md:w-5/12 h-48 md:h-full bg-white md:rounded-r-3xl overflow-hidden'>
                                     <img
                                         src={Person}
                                         alt="Project Image"
@@ -348,8 +348,8 @@ const OurWork = () => {
 
                     {/* Card 5 - Black (outer right) */}
                     <div
-                        className={`bg-white hover:bg-gray-100 justify-between rounded-3xl overflow-hidden transition-all duration-1000 ease-in-out cursor-pointer h-full border-2 border-black ${hoveredCard === 5 ? 'w-8/12' : hoveredCard && hoveredCard !== 5 ? 'w-32' : 'w-32'
-                            }`}
+                        className={`bg-white hover:bg-gray-100 justify-between rounded-3xl overflow-hidden transition-all duration-1000 ease-in-out cursor-pointer ${hoveredCard === 5 ? 'w-full md:w-8/12 h-96 md:h-full mb-4 md:mb-0' : hoveredCard && hoveredCard !== 5 ? 'w-full md:w-32 h-24 md:h-full mb-4 md:mb-0' : 'w-full md:w-32 h-24 md:h-full mb-4 md:mb-0'
+                            } border-2 border-black`}
                         onMouseEnter={() => setHoveredCard(5)}
                         onMouseLeave={() => setHoveredCard(null)}
                     >
@@ -366,9 +366,9 @@ const OurWork = () => {
 
                         {/* Expanded State - 70/30 Split */}
                         {hoveredCard === 5 && (
-                            <div className='w-full h-full flex'>
-                                {/* Content Area - 70% */}
-                                <div className='w-7/12 p-6 flex flex-col justify-center'>
+                            <div className='w-full h-full flex flex-col md:flex-row'>
+                                {/* Content Area - Full width on mobile, 70% on desktop */}
+                                <div className='w-full md:w-7/12 p-4 md:p-6 flex flex-col justify-center'>
                                     {/* Company Logo */}
                                     <div className='flex items-center gap-2 mb-6'>
                                         <div className='w-4 h-4 bg-red-500 rounded-full'></div>
@@ -376,14 +376,14 @@ const OurWork = () => {
                                     </div>
 
                                     {/* Project Title */}
-                                    <div className='mb-6'>
-                                        <h3 className='text-3xl font-bold mb-2 text-red-500'>{projects[4].title}</h3>
-                                        <p className='text-base font-medium text-black'>Data Visualization</p>
+                                    <div className='mb-4 md:mb-6'>
+                                        <h3 className='text-2xl md:text-3xl font-bold mb-2 text-red-500'>{projects[4].title}</h3>
+                                        <p className='text-sm md:text-base font-medium text-black'>Data Visualization</p>
                                     </div>
 
                                     {/* Project Description */}
-                                    <blockquote className='mb-6'>
-                                        <p className='text-sm leading-relaxed mb-4 text-gray-700'>
+                                    <blockquote className='mb-4 md:mb-6'>
+                                        <p className='text-xs md:text-sm leading-relaxed mb-2 md:mb-4 text-gray-700'>
                                             {projects[4].description}
                                         </p>
                                         <footer>
@@ -405,8 +405,8 @@ const OurWork = () => {
                                     </div>
                                 </div>
 
-                                {/* Image Area - 30% Portrait */}
-                                <div className='w-5/12 h-full bg-white rounded-r-3xl overflow-hidden'>
+                                {/* Image Area - Full width on mobile, 30% on desktop */}
+                                <div className='w-full md:w-5/12 h-48 md:h-full bg-white md:rounded-r-3xl overflow-hidden'>
                                     <img
                                         src={Person}
                                         alt="Project Image"
@@ -420,7 +420,7 @@ const OurWork = () => {
 
 
                 <div className='text-center mt-12'>
-                    <button className='border-2 border-black text-black px-8 py-3 rounded-full font-medium hover:bg-black hover:text-white transition-all duration-300 uppercase tracking-wide'>
+                    <button className='border-2 border-black text-black px-6 py-2 md:px-8 md:py-3 rounded-full font-medium hover:bg-black hover:text-white transition-all duration-300 uppercase tracking-wide text-sm md:text-base'>
                         View All Projects
                     </button>
                 </div>
