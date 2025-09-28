@@ -95,7 +95,7 @@ const Navbar = () => {
                     }`}>
                     <div className='h-full flex flex-col justify-between p-6 bg-white'>
                         {/* Navigation Items */}
-                        <div className='flex flex-col space-y-8 pt-8'>
+                        <div className='flex flex-col justify-evenly flex-1 pt-8 pb-8'>
                             {navItems.map((item) => (
                                 <button
                                     key={item.id}
