@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Person from '../assets/person.jpg'
 import Ecomm from '../assets/ecommerece.jpg'
-import BrandId from "../assets/Brand-identity.jpg"
+import BrandId from "../assets/Brand-Identity.jpg"
 import Mobile from "../assets/Mobile.jpg"
 import Marketing from '../assets/Marketing.jpg'
 import SaaS from '../assets/SaaS.jpg'
