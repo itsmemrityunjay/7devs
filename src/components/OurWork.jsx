@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
 import Person from '../assets/person.jpg'
+import Ecomm from '../assets/ecommerece.jpg'
+import BrandId from "../assets/Brand-identity.jpg"
+import Mobile from "../assets/Mobile.jpg"
+import Marketing from '../assets/Marketing.jpg'
+import SaaS from '../assets/SaaS.jpg'
 
 const OurWork = () => {
     const [hoveredCard, setHoveredCard] = useState(null);
@@ -8,35 +13,35 @@ const OurWork = () => {
             title: "E-Commerce Platform",
             category: "Web Development",
             description: "A modern e-commerce solution with seamless user experience and powerful analytics.",
-            image: Person,
+            image: Ecomm,
             tags: ["React", "Node.js", "MongoDB"]
         },
         {
             title: "Brand Identity Design",
             category: "Branding",
             description: "Complete brand makeover including logo, color palette, and marketing materials.",
-            image: Person,
+            image: BrandId,
             tags: ["Logo Design", "Brand Guidelines", "Print Design"]
         },
         {
             title: "Mobile App Development",
             category: "Mobile",
             description: "Cross-platform mobile application with intuitive design and robust functionality.",
-            image: Person,
+            image: Mobile,
             tags: ["React Native", "UI/UX", "API Integration"]
         },
         {
             title: "Digital Marketing Campaign",
             category: "Marketing",
             description: "Multi-channel marketing strategy that increased brand awareness by 300%.",
-            image: Person,
+            image: Marketing,
             tags: ["Social Media", "SEO", "Content Marketing"]
         },
         {
             title: "SaaS Dashboard",
             category: "Web Development",
             description: "Analytics dashboard with real-time data visualization and reporting tools.",
-            image: Person,
+            image: SaaS,
             tags: ["Vue.js", "D3.js", "Python"]
         },
         {
@@ -73,7 +78,7 @@ const OurWork = () => {
                         {hoveredCard !== 1 && (
                             <div className='w-full h-full bg-white rounded-3xl overflow-hidden transition-all duration-800 delay-75'>
                                 <img
-                                    src={Person}
+                                    src={projects[0].image}
                                     alt="Project Image"
                                     className='w-full h-full object-cover grayscale transition-all duration-600'
                                 />
@@ -124,7 +129,7 @@ const OurWork = () => {
                                 {/* Image Area - 30% Portrait */}
                                 <div className='md:w-5/12 w-full h-full bg-white rounded-r-3xl overflow-hidden'>
                                     <img
-                                        src={Person}
+                                        src={Ecomm}
                                         alt="Project Image"
                                         className='w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300'
                                     />
@@ -144,7 +149,7 @@ const OurWork = () => {
                         {hoveredCard !== 2 && (
                             <div className='w-full h-full bg-white rounded-3xl overflow-hidden transition-all duration-500'>
                                 <img
-                                    src={Person}
+                                    src={projects[1].image}
                                     alt="Project Image"
                                     className='w-full h-full object-cover grayscale transition-all duration-600'
                                 />
@@ -195,7 +200,7 @@ const OurWork = () => {
                                 {/* Image Area - Full width on mobile, 30% on desktop */}
                                 <div className='w-full md:w-5/12 h-48 md:h-full bg-white md:rounded-r-3xl overflow-hidden'>
                                     <img
-                                        src={Person}
+                                        src={BrandId}
                                         alt="Project Image"
                                         className='w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300'
                                     />
@@ -215,7 +220,7 @@ const OurWork = () => {
                         {hoveredCard && hoveredCard !== 3 && (
                             <div className='w-full h-full bg-white rounded-3xl overflow-hidden transition-all duration-500'>
                                 <img
-                                    src={Person}
+                                    src={projects[2].image}
                                     alt="Project Image"
                                     className='w-full h-full object-cover grayscale transition-all duration-600'
                                 />
@@ -266,7 +271,7 @@ const OurWork = () => {
                                 {/* Image Area - Full width on mobile, 30% on desktop */}
                                 <div className='w-full md:w-5/12 h-48 md:h-full bg-white md:rounded-r-3xl overflow-hidden'>
                                     <img
-                                        src={Person}
+                                        src={projects[2].image}
                                         alt="Project Image"
                                         className='w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300'
                                     />
@@ -286,7 +291,7 @@ const OurWork = () => {
                         {hoveredCard !== 4 && (
                             <div className='w-full h-full bg-white rounded-3xl overflow-hidden transition-all duration-500'>
                                 <img
-                                    src={Person}
+                                    src={projects[3].image}
                                     alt="Project Image"
                                     className='w-full h-full object-cover grayscale transition-all duration-600'
                                 />
@@ -337,7 +342,7 @@ const OurWork = () => {
                                 {/* Image Area - Full width on mobile, 30% on desktop */}
                                 <div className='w-full md:w-5/12 h-48 md:h-full bg-white md:rounded-r-3xl overflow-hidden'>
                                     <img
-                                        src={Person}
+                                        src={projects[3].image}
                                         alt="Project Image"
                                         className='w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300'
                                     />
@@ -357,7 +362,7 @@ const OurWork = () => {
                         {hoveredCard !== 5 && (
                             <div className='w-full h-full bg-white rounded-3xl overflow-hidden transition-all duration-500'>
                                 <img
-                                    src={Person}
+                                    src={projects[4].image}
                                     alt="Project Image"
                                     className='w-full h-full object-cover grayscale transition-all duration-600'
                                 />
@@ -408,7 +413,7 @@ const OurWork = () => {
                                 {/* Image Area - Full width on mobile, 30% on desktop */}
                                 <div className='w-full md:w-5/12 h-48 md:h-full bg-white md:rounded-r-3xl overflow-hidden'>
                                     <img
-                                        src={Person}
+                                        src={projects[4].image}
                                         alt="Project Image"
                                         className='w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300'
                                     />
@@ -420,9 +425,9 @@ const OurWork = () => {
 
 
                 <div className='text-center mt-12'>
-                    <button className='border-2 border-black text-black px-6 py-2 md:px-8 md:py-3 rounded-full font-medium hover:bg-black hover:text-white transition-all duration-300 uppercase tracking-wide text-sm md:text-base'>
+                    {/* <button className='border-2 border-black text-black px-6 py-2 md:px-8 md:py-3 rounded-full font-medium hover:bg-black hover:text-white transition-all duration-300 uppercase tracking-wide text-sm md:text-base'>
                         View All Projects
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </section>
