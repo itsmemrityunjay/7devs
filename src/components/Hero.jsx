@@ -1,6 +1,21 @@
 import React from 'react'
 
 const Hero = () => {
+    // Smooth scroll to section
+    const scrollToSection = (sectionId) => {
+        const element = document.getElementById(sectionId)
+        if (element) {
+            const offset = 80 // Account for fixed navbar height
+            const elementPosition = element.getBoundingClientRect().top
+            const offsetPosition = elementPosition + window.pageYOffset - offset
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            })
+        }
+    }
+
     return (
         <section id="hero" className='min-h-screen bg-white flex items-center justify-center px-4 relative pt-20'>
             {/* Hero Content */}
@@ -19,8 +34,8 @@ const Hero = () => {
                     Uncovering insights that drive strategy. Creating digital experiences that captivate. Executing with precision for real impact.
                 </p>
 
-                <button className='border-2 border-black text-black px-8 py-3 rounded-full font-medium hover:bg-black hover:text-white transition-all duration-300 uppercase tracking-wide'>
-                    View All Work
+                <button onClick={() => scrollToSection('services')} className='border-2 border-black text-black px-8 py-3 rounded-full font-medium hover:bg-black hover:text-white transition-all duration-300 uppercase tracking-wide'>
+                    View All Services
                 </button>
             </div>
         </section>

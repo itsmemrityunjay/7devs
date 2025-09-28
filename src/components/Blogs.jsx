@@ -48,14 +48,14 @@ const Blogs = () => {
                     </div>
 
                     {/* FREE text positioned absolutely */}
-                    <div className='absolute top-0 md:top-0 right-[50%] md:right-auto md:left-[55%] text-2xl md:text-3xl font-normal text-white tracking-normal'>
+                    {/* <div className='absolute top-0 md:top-0 right-[50%] md:right-auto md:left-[55%] text-2xl md:text-3xl font-normal text-white tracking-normal'>
                         FREE
-                    </div>
+                    </div> */}
 
                     {/* Arrow decoration */}
-                    <div className='absolute right-[15%] top-6 hidden md:block'>
+                    {/* <div className='absolute right-[15%] top-6 hidden md:block'>
                         <div className='w-32 h-0.5 bg-red-500 transform rotate-45'></div>
-                    </div>
+                    </div> */}
 
                     {/* Navigation Arrows */}
                     <div className='absolute right-0 top-1/2 -translate-y-1/2 flex space-x-3 md:space-x-4'>
