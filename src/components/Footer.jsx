@@ -14,7 +14,7 @@ const Footer = () => {
                             We're your Digital Brand Architects, crafting experiences that captivate and strategies that deliver real impact.
                         </p>
                         <button className='bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors'>
-                            Get Started
+                            <a href="tel:+917889930884" className='hover:text-black transition-colors'>Get Started</a>
                         </button>
                     </div>
 
@@ -22,10 +22,10 @@ const Footer = () => {
                     <div>
                         <h4 className='text-xl font-bold mb-4'>Services</h4>
                         <ul className='space-y-2 text-gray-600'>
-                            <li><a href="#" className='hover:text-black transition-colors'>Brand Design</a></li>
-                            <li><a href="#" className='hover:text-black transition-colors'>Web Development</a></li>
-                            <li><a href="#" className='hover:text-black transition-colors'>Digital Marketing</a></li>
-                            <li><a href="#" className='hover:text-black transition-colors'>Content Creation</a></li>
+                            <li><a href="https://wa.me/917889930884?text=Hi!%20I%20am%20looking%20for%20Brand%20Design%20services." target="_blank" rel="noopener noreferrer" className='hover:text-black transition-colors'>Brand Design</a></li>
+                            <li><a href="https://wa.me/917889930884?text=Hi!%20I%20am%20looking%20for%20Web%20Development%20services." target="_blank" rel="noopener noreferrer" className='hover:text-black transition-colors'>Web Development</a></li>
+                            <li><a href="https://wa.me/917889930884?text=Hi!%20I%20am%20looking%20for%20Digital%20Marketing%20services." target="_blank" rel="noopener noreferrer" className='hover:text-black transition-colors'>Digital Marketing</a></li>
+                            <li><a href="https://wa.me/917889930884?text=Hi!%20I%20am%20looking%20for%20Content%20Creation%20services." target="_blank" rel="noopener noreferrer" className='hover:text-black transition-colors'>Content Creation</a></li>
                         </ul>
                     </div>
 
