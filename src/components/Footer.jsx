@@ -33,16 +33,18 @@ const Footer = () => {
                     <div>
                         <h4 className='text-xl font-bold mb-4'>Connect</h4>
                         <ul className='space-y-2 text-gray-600'>
-                            <li><a href="#" className='hover:text-black transition-colors'>LinkedIn</a></li>
-                            <li><a href="#" className='hover:text-black transition-colors'>Twitter</a></li>
-                            <li><a href="#" className='hover:text-black transition-colors'>Instagram</a></li>
-                            <li><a href="#" className='hover:text-black transition-colors'>Contact Us</a></li>
+                            {/* <li><a href="#" className='hover:text-black transition-colors'>LinkedIn</a></li>
+                            <li><a href="#" className='hover:text-black transition-colors'>Twitter</a></li> */}
+                            <li><a href="https://www.instagram.com/sevendevs.in/" target="_blank" rel="noopener noreferrer" className='hover:text-black transition-colors'>Instagram</a></li>
+                            <li><a href="https://wa.link/1yvinh" target="_blank" rel="noopener noreferrer" className='hover:text-black transition-colors'>Whatsapp</a></li>
+                            <li><a href="mailto:hello@7devs.in" target="_blank" rel="noopener noreferrer" className='hover:text-black transition-colors'>Mail Us</a></li>
+                            <li><a href="tel:+917889930884" className='hover:text-black transition-colors'>Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div className='border-t border-gray-200 pt-8 text-center text-gray-500'>
-                    <p>&copy; 2024 7DEVS. All rights reserved. Crafted with ❤️ for ambitious brands.</p>
+                    <p>&copy; 2024 7DEVS. All rights reserved.</p>
                 </div>
             </div>
         </footer>

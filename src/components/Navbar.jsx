@@ -73,10 +73,9 @@ const Navbar = () => {
 
                     {/* Contact Button */}
                     <button
-                        onClick={() => scrollToSection('contact')}
+
                         className='hidden md:block bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors'
-                    >
-                        CONTACT
+                    ><a href="tel:+917889930884" target="_blank" rel="noopener noreferrer">CONTACT</a>
                     </button>
 
                     {/* Mobile Menu Button */}

@@ -39,40 +39,40 @@ const Blogs = () => {
             <div className='container mx-auto px-4 md:px-8'>
                 <div className='relative mb-6 md:mb-8'>
                     <div className='flex flex-col items-start mb-2'>
-                        <h3 className='text-lg font-normal text-white tracking-normal'>DOWNLOAD</h3>
+                        {/* <h3 className='text-lg font-normal text-white tracking-normal'>Our</h3> */}
                         <div className='flex items-baseline relative'>
                             <h2 className='text-6xl md:text-7xl font-bold text-white tracking-tighter leading-none'>
-                                RESOURCES
+                                Blogs
                             </h2>
                         </div>
                     </div>
-                    
+
                     {/* FREE text positioned absolutely */}
                     <div className='absolute top-0 md:top-0 right-[50%] md:right-auto md:left-[55%] text-2xl md:text-3xl font-normal text-white tracking-normal'>
                         FREE
                     </div>
-                    
+
                     {/* Arrow decoration */}
                     <div className='absolute right-[15%] top-6 hidden md:block'>
                         <div className='w-32 h-0.5 bg-red-500 transform rotate-45'></div>
                     </div>
-                    
+
                     {/* Navigation Arrows */}
                     <div className='absolute right-0 top-1/2 -translate-y-1/2 flex space-x-3 md:space-x-4'>
-                        <button 
+                        <button
                             onClick={() => {
                                 if (scrollRef.current) {
                                     // For mobile, scroll by individual card width
                                     const isMobile = window.innerWidth < 768;
-                                    const scrollAmount = isMobile 
+                                    const scrollAmount = isMobile
                                         ? scrollRef.current.scrollLeft - scrollRef.current.querySelector('article').offsetWidth
                                         : scrollRef.current.scrollLeft - scrollRef.current.clientWidth;
-                                    
+
                                     scrollRef.current.scrollTo({
                                         left: Math.max(0, scrollAmount), // Prevent scrolling past the beginning
                                         behavior: 'smooth'
                                     });
-                                    
+
                                     const newActiveSlide = Math.max(0, activeSlide - 1);
                                     setActiveSlide(newActiveSlide);
                                 }
@@ -84,22 +84,22 @@ const Blogs = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                             </svg>
                         </button>
-                        <button 
+                        <button
                             onClick={() => {
                                 if (scrollRef.current) {
                                     // For mobile, scroll by individual card width
                                     const isMobile = window.innerWidth < 768;
-                                    const scrollAmount = isMobile 
+                                    const scrollAmount = isMobile
                                         ? scrollRef.current.scrollLeft + scrollRef.current.querySelector('article').offsetWidth
                                         : scrollRef.current.scrollLeft + scrollRef.current.clientWidth;
-                                    
+
                                     const maxScroll = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
-                                    
+
                                     scrollRef.current.scrollTo({
                                         left: Math.min(maxScroll, scrollAmount), // Prevent scrolling past the end
                                         behavior: 'smooth'
                                     });
-                                    
+
                                     const newActiveSlide = Math.min(blogPosts.length - 1, activeSlide + 1);
                                     setActiveSlide(newActiveSlide);
                                 }
@@ -116,27 +116,27 @@ const Blogs = () => {
 
                 <div className="relative mb-6 md:mb-8">
                     {/* Horizontal scrolling container */}
-                    <div 
+                    <div
                         ref={scrollRef}
-                        className="flex overflow-x-auto gap-0 pb-4 snap-x snap-mandatory hide-scrollbar md:pl-0" 
+                        className="flex overflow-x-auto gap-0 pb-4 snap-x snap-mandatory hide-scrollbar md:pl-0"
                         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                     >
                         {blogPosts.map((post, index) => (
-                            <article 
-                                key={index} 
+                            <article
+                                key={index}
                                 className={`flex-shrink-0 w-full md:w-1/2 snap-center ${index > 0 ? 'border-l border-red-800/30' : ''}`}
                             >
                                 <div className="bg-transparent overflow-hidden h-full px-4 md:px-8">
                                     {/* Card image/thumbnail area with actual image */}
                                     <div className="w-full aspect-[16/9] bg-gray-800 overflow-hidden">
-                                        <ImageWithFallback 
-                                            src={post.image} 
+                                        <ImageWithFallback
+                                            src={post.image}
                                             alt={post.title}
                                             className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                                             fallback="https://via.placeholder.com/600x400/FF0000/FFFFFF/?text=7Devs+Resource"
                                         />
                                     </div>
-                                    
+
                                     <div className="py-2 md:py-3">
                                         {/* Category tag */}
                                         <div className="mb-2 flex items-center">
@@ -147,17 +147,17 @@ const Blogs = () => {
                                                 Free
                                             </span>
                                         </div>
-                                        
+
                                         {/* Title */}
                                         <h3 className="text-lg md:text-xl font-bold text-red-500 mb-2 uppercase leading-tight tracking-normal">
                                             {post.title}
                                         </h3>
-                                        
+
                                         {/* Excerpt */}
                                         <p className="text-gray-300 text-sm mb-4 line-clamp-2 leading-relaxed max-w-lg">
                                             {post.excerpt}
                                         </p>
-                                        
+
                                         {/* CTA Button */}
                                         <button className="border-2 border-white text-white px-3 py-1 text-xs font-medium hover:bg-red-500 hover:border-red-500 hover:text-white transition-all duration-300 uppercase tracking-wide">
                                             Get Guide
@@ -168,9 +168,10 @@ const Blogs = () => {
                         ))}
                     </div>
                 </div>
-                
+
                 {/* Add custom CSS to hide scrollbar but maintain functionality */}
-                <style dangerouslySetInnerHTML={{ __html: `
+                <style dangerouslySetInnerHTML={{
+                    __html: `
                     .hide-scrollbar::-webkit-scrollbar {
                         display: none;
                     }
@@ -184,16 +185,16 @@ const Blogs = () => {
                             if (scrollRef.current) {
                                 const cardWidth = scrollRef.current.querySelector('article').offsetWidth;
                                 const gap = 0; // No gap in our current design
-                                
+
                                 scrollRef.current.scrollTo({
                                     left: index * cardWidth,
                                     behavior: 'smooth'
                                 });
-                                
+
                                 setActiveSlide(index);
                             }
                         };
-                        
+
                         return (
                             <button
                                 key={index}
