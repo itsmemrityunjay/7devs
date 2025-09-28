@@ -119,7 +119,7 @@ const OurWork = () => {
                                     </blockquote>
 
                                     <div className='flex items-center gap-2'>
-                                        <span className='text-black font-medium text-sm'>View Project</span>
+                                        <a href="https://wa.me/917889930884?text=Hi!%20I%20am%20interested%20in%20your%20E-Commerce%20Platform%20development%20services.%20Let's%20work%20together!" target="_blank" rel="noopener noreferrer" className='text-black font-medium text-sm hover:text-red-500 transition-colors'>Let's Work Together</a>
                                         <svg className='w-4 h-4 text-red-500' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                                             <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M17 8l4 4m0 0l-4 4m4-4H3' />
                                         </svg>
@@ -190,7 +190,7 @@ const OurWork = () => {
                                     </blockquote>
 
                                     <div className='flex items-center gap-2'>
-                                        <span className='text-black font-medium text-sm'>View Project</span>
+                                        <a href="https://wa.me/917889930884?text=Hi!%20I%20am%20interested%20in%20your%20Brand%20Identity%20Design%20services.%20Let's%20work%20together!" target="_blank" rel="noopener noreferrer" className='text-black font-medium text-sm hover:text-red-500 transition-colors'>Let's Work Together</a>
                                         <svg className='w-4 h-4 text-red-500' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                                             <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M17 8l4 4m0 0l-4 4m4-4H3' />
                                         </svg>
@@ -261,7 +261,7 @@ const OurWork = () => {
                                     </blockquote>
 
                                     <div className='flex items-center gap-2'>
-                                        <span className='text-black font-medium text-sm'>View Project</span>
+                                        <a href="https://wa.me/917889930884?text=Hi!%20I%20am%20interested%20in%20your%20Mobile%20App%20Development%20services.%20Let's%20work%20together!" target="_blank" rel="noopener noreferrer" className='text-black font-medium text-sm hover:text-red-500 transition-colors'>Let's Work Together</a>
                                         <svg className='w-4 h-4 text-red-500' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                                             <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M17 8l4 4m0 0l-4 4m4-4H3' />
                                         </svg>
@@ -332,7 +332,7 @@ const OurWork = () => {
                                     </blockquote>
 
                                     <div className='flex items-center gap-2'>
-                                        <span className='text-black font-medium text-sm'>View Project</span>
+                                        <a href="https://wa.me/917889930884?text=Hi!%20I%20am%20interested%20in%20your%20Digital%20Marketing%20Campaign%20services.%20Let's%20work%20together!" target="_blank" rel="noopener noreferrer" className='text-black font-medium text-sm hover:text-red-500 transition-colors'>Let's Work Together</a>
                                         <svg className='w-4 h-4 text-red-500' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                                             <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M17 8l4 4m0 0l-4 4m4-4H3' />
                                         </svg>
@@ -403,7 +403,7 @@ const OurWork = () => {
                                     </blockquote>
 
                                     <div className='flex items-center gap-2'>
-                                        <span className='text-black font-medium text-sm'>View Project</span>
+                                        <a href="https://wa.me/917889930884?text=Hi!%20I%20am%20interested%20in%20your%20SaaS%20Dashboard%20development%20services.%20Let's%20work%20together!" target="_blank" rel="noopener noreferrer" className='text-black font-medium text-sm hover:text-red-500 transition-colors'>Let's Work Together</a>
                                         <svg className='w-4 h-4 text-red-500' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                                             <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M17 8l4 4m0 0l-4 4m4-4H3' />
                                         </svg>
