@@ -1,44 +1,33 @@
-import React, { useState, useEffect } from 'react'
-import LogoGlowing from '../assets/Logo.png'
+import { useState, useEffect } from 'react'
+import { Link, NavLink, useLocation } from 'react-router-dom'
+import { SITE } from '../site'
+
+const navItems = [
+    { name: 'Services', to: '/services' },
+    { name: 'Pricing', to: '/pricing' },
+    { name: 'Work', to: '/work' },
+    { name: 'About', to: '/about' },
+    { name: 'Blog', to: '/blog' },
+    { name: 'FAQ', to: '/faq' }
+]
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+    const { pathname } = useLocation()
 
     // Handle scroll effect
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50)
         }
-        window.addEventListener('scroll', handleScroll)
+        handleScroll()
+        window.addEventListener('scroll', handleScroll, { passive: true })
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
-    // Smooth scroll to section
-    const scrollToSection = (sectionId) => {
-        const element = document.getElementById(sectionId)
-        if (element) {
-            const offset = 80 // Account for fixed navbar height
-            const elementPosition = element.getBoundingClientRect().top
-            const offsetPosition = elementPosition + window.pageYOffset - offset
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            })
-        }
-        setIsMobileMenuOpen(false)
-    }
-
-    const navItems = [
-        { name: 'Home', id: 'hero' },
-        { name: 'About', id: 'usp' },
-        { name: 'Process', id: 'process' },
-        { name: 'Services', id: 'services' },
-        { name: 'Work', id: 'work' },
-        { name: 'Clients', id: 'clients' },
-        { name: 'Insights', id: 'blogs' }
-    ]
+    // Close the mobile menu on navigation
+    useEffect(() => { setIsMobileMenuOpen(false) }, [pathname])
 
     return (
         <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isMobileMenuOpen ? 'bg-white shadow-sm' : isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent'
@@ -46,39 +35,39 @@ const Navbar = () => {
             <div className='container mx-auto px-4'>
                 <div className='flex justify-between items-center h-20'>
                     {/* Logo */}
-                    <button
-                        onClick={() => scrollToSection('hero')}
-                        className='hover:opacity-70 transition-opacity'
-                    >
+                    <Link to='/' className='hover:opacity-70 transition-opacity' aria-label='7Devs home'>
                         <img
-                            src={LogoGlowing}
-                            alt="7DEVS"
+                            src={SITE.logo}
+                            alt="7Devs"
+                            width='136'
+                            height='40'
                             className='h-10 w-auto'
                         />
-                    </button>
+                    </Link>
 
                     {/* Desktop Navigation */}
                     <div className='hidden md:flex space-x-8'>
                         {navItems.map((item) => (
-                            <button
-                                key={item.id}
-                                onClick={() => scrollToSection(item.id)}
+                            <NavLink
+                                key={item.to}
+                                to={item.to}
                                 className='text-black font-medium hover:opacity-70 transition-opacity relative group'
                             >
                                 {item.name}
                                 <span className='absolute -bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full'></span>
-                            </button>
+                            </NavLink>
                         ))}
                     </div>
 
                     {/* Contact Button */}
-                    <button className='hidden md:block bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors'>
-                        <a href="tel:+917889930884" target="_blank" rel="noopener noreferrer">CONTACT</a>
-                    </button>
+                    <Link to='/contact' className='hidden md:block bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors'>CONTACT</Link>
 
                     {/* Mobile Menu Button */}
                     <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+                        aria-expanded={isMobileMenuOpen}
+                        aria-controls='mobile-menu'
                         className='md:hidden flex flex-col justify-center items-center w-6 h-6 space-y-1'
                     >
                         <span className={`block w-6 h-0.5 bg-black transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
@@ -91,33 +80,33 @@ const Navbar = () => {
                 </div>
 
                 {/* Mobile Menu */}
-                <div className={`md:hidden fixed inset-0 top-20 bg-white z-40 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
+                <div id='mobile-menu' className={`md:hidden fixed inset-0 top-20 bg-white z-40 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
                     }`}>
                     <div className='h-full flex flex-col justify-between p-6 bg-white'>
                         {/* Navigation Items */}
                         <div className='flex flex-col justify-evenly flex-1 pt-8 pb-8'>
                             {navItems.map((item) => (
-                                <button
-                                    key={item.id}
-                                    onClick={() => scrollToSection(item.id)}
+                                <Link
+                                    key={item.to}
+                                    to={item.to}
+                                    tabIndex={isMobileMenuOpen ? 0 : -1}
                                     className='text-black font-bold text-3xl hover:text-gray-600 transition-colors text-left'
                                 >
                                     {item.name}
-                                </button>
+                                </Link>
                             ))}
                         </div>
 
                         {/* Contact Section */}
                         <div className='space-y-8'>
-                            <button className='bg-black text-white px-8 py-4 rounded-full font-medium hover:bg-gray-800 transition-colors w-full text-lg'>
-                                <a href="tel:+917889930884" target="_blank" rel="noopener noreferrer">CONTACT</a>
-                            </button>
+                            <Link to='/contact' tabIndex={isMobileMenuOpen ? 0 : -1} className='block text-center bg-black text-white px-8 py-4 rounded-full font-medium hover:bg-gray-800 transition-colors w-full text-lg'>CONTACT</Link>
 
                             {/* Social Icons */}
                             <div className='flex justify-center space-x-8'>
                                 {/* Instagram */}
                                 <a
-                                    href="https://www.instagram.com/sevendevs.in/"
+                                    href={SITE.instagram}
+                                    aria-label="7Devs on Instagram"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className='w-12 h-12 bg-black rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors'
@@ -129,7 +118,8 @@ const Navbar = () => {
 
                                 {/* WhatsApp */}
                                 <a
-                                    href="https://wa.me/917889930884"
+                                    href={SITE.whatsapp}
+                                    aria-label="Chat with 7Devs on WhatsApp"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className='w-12 h-12 bg-black rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors'
@@ -141,9 +131,8 @@ const Navbar = () => {
 
                                 {/* Email */}
                                 <a
-                                    href="mailto:sevendevs.in@gmail.com"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                    href={`mailto:${SITE.email}`}
+                                    aria-label="Email 7Devs"
                                     className='w-12 h-12 bg-black rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors'
                                 >
                                     <svg className='w-6 h-6 text-white' fill='currentColor' viewBox='0 0 24 24'>

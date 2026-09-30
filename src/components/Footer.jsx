@@ -1,4 +1,9 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
+import { SITE } from '../site'
+import { services } from '../content/services'
+import Button from './ui/Button'
+
+const linkCls = 'hover:text-black transition-colors'
 
 const Footer = () => {
     return (
@@ -7,44 +12,56 @@ const Footer = () => {
                 <div className='grid md:grid-cols-4 gap-8 mb-12'>
                     {/* Brand */}
                     <div className='md:col-span-2'>
-                        <h3 className='text-3xl font-bold mb-4'>
+                        <p className='text-3xl font-bold mb-4'>
                             7DEVS.
-                        </h3>
-                        <p className='text-gray-600 mb-6 max-w-md'>
-                            We're your Digital Brand Architects, crafting experiences that captivate and strategies that deliver real impact.
                         </p>
-                        <button className='bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors'>
-                            <a href="tel:+917889930884" className='hover:text-black transition-colors'>Get Started</a>
-                        </button>
+                        <p className='text-gray-600 mb-6 max-w-md'>
+                            Affordable, fast digital marketing and web development for small and growing businesses across India. Remote-first.
+                        </p>
+                        <Button href={SITE.whatsapp}>Get Started on WhatsApp</Button>
+                        <p className='text-gray-600 mt-6 max-w-md text-sm'>
+                            Need deep brand strategy and positioning? See our sister studio, <a href={SITE.sisterUrl} target='_blank' rel='noopener' className='underline hover:text-black'>{SITE.sisterName}</a>.
+                        </p>
                     </div>
 
                     {/* Services */}
-                    <div>
-                        <h4 className='text-xl font-bold mb-4'>Services</h4>
+                    <nav aria-label='Services'>
+                        <h2 className='text-xl font-bold mb-4'>Services</h2>
                         <ul className='space-y-2 text-gray-600'>
-                            <li><a href="https://wa.me/917889930884?text=Hi!%20I%20am%20looking%20for%20Brand%20Design%20services." target="_blank" rel="noopener noreferrer" className='hover:text-black transition-colors'>Brand Design</a></li>
-                            <li><a href="https://wa.me/917889930884?text=Hi!%20I%20am%20looking%20for%20Web%20Development%20services." target="_blank" rel="noopener noreferrer" className='hover:text-black transition-colors'>Web Development</a></li>
-                            <li><a href="https://wa.me/917889930884?text=Hi!%20I%20am%20looking%20for%20Digital%20Marketing%20services." target="_blank" rel="noopener noreferrer" className='hover:text-black transition-colors'>Digital Marketing</a></li>
-                            <li><a href="https://wa.me/917889930884?text=Hi!%20I%20am%20looking%20for%20Content%20Creation%20services." target="_blank" rel="noopener noreferrer" className='hover:text-black transition-colors'>Content Creation</a></li>
+                            {services.map((s) => (
+                                <li key={s.slug}><Link to={`/services/${s.slug}`} className={linkCls}>{s.name}</Link></li>
+                            ))}
                         </ul>
-                    </div>
+                    </nav>
 
-                    {/* Contact */}
+                    {/* Company + Contact */}
                     <div>
-                        <h4 className='text-xl font-bold mb-4'>Connect</h4>
+                        <h2 className='text-xl font-bold mb-4'>Company</h2>
+                        <ul className='space-y-2 text-gray-600 mb-6'>
+                            <li><Link to='/pricing' className={linkCls}>Pricing</Link></li>
+                            <li><Link to='/work' className={linkCls}>Work</Link></li>
+                            <li><Link to='/about' className={linkCls}>About</Link></li>
+                            <li><Link to='/blog' className={linkCls}>Blog</Link></li>
+                            <li><Link to='/faq' className={linkCls}>FAQ</Link></li>
+                            <li><Link to='/contact' className={linkCls}>Contact</Link></li>
+                        </ul>
+                        <h2 className='text-xl font-bold mb-4'>Connect</h2>
                         <ul className='space-y-2 text-gray-600'>
-                            {/* <li><a href="#" className='hover:text-black transition-colors'>LinkedIn</a></li>
-                            <li><a href="#" className='hover:text-black transition-colors'>Twitter</a></li> */}
-                            <li><a href="https://www.instagram.com/sevendevs.in/" target="_blank" rel="noopener noreferrer" className='hover:text-black transition-colors'>Instagram</a></li>
-                            <li><a href="https://wa.link/1yvinh" target="_blank" rel="noopener noreferrer" className='hover:text-black transition-colors'>Whatsapp</a></li>
-                            <li><a href="mailto:hello@7devs.in" target="_blank" rel="noopener noreferrer" className='hover:text-black transition-colors'>Mail Us</a></li>
-                            <li><a href="tel:+917889930884" className='hover:text-black transition-colors'>Contact Us</a></li>
+                            <li><a href={SITE.instagram} target='_blank' rel='noopener noreferrer' className={linkCls}>Instagram</a></li>
+                            <li><a href={SITE.whatsapp} target='_blank' rel='noopener noreferrer' className={linkCls}>WhatsApp</a></li>
+                            <li><a href={`mailto:${SITE.email}`} className={linkCls}>{SITE.email}</a></li>
+                            <li><a href={`tel:${SITE.phoneTel}`} className={linkCls}>{SITE.phoneDisplay}</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div className='border-t border-gray-200 pt-8 text-center text-gray-500'>
-                    <p>&copy; 2024 7DEVS. All rights reserved.</p>
+                    <p className='mb-2'>
+                        <Link to='/privacy-policy' className={linkCls}>Privacy Policy</Link>
+                        <span aria-hidden='true'> · </span>
+                        <Link to='/terms' className={linkCls}>Terms</Link>
+                    </p>
+                    <p>&copy; {new Date().getFullYear()} 7DEVS. All rights reserved.</p>
                 </div>
             </div>
         </footer>

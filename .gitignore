@@ -42,3 +42,6 @@ build
 .cache
 .vercel
 .output
+# Large design source files (keep out of repo)
+*.psd
+dist-ssr
