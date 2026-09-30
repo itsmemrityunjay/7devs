@@ -13,7 +13,7 @@ const Hero = () => {
             <div aria-hidden='true' className='absolute -bottom-40 -left-40 w-[24rem] h-[24rem] rounded-full bg-gray-300/40 blur-3xl animate-float [animation-delay:-6s]'></div>
 
             <div className='container mx-auto text-center relative'>
-                <p className='animate-fade-up inline-flex items-center gap-2 border border-gray-200 bg-white/80 backdrop-blur rounded-full px-4 py-2 text-sm font-medium text-gray-700 mb-8'>
+                <p className='animate-fade-up inline-flex items-center gap-2  px-4 py-2 text-sm font-medium text-gray-700 mb-8'>
                     <span className='relative flex w-2 h-2'>
                         <span className='absolute inline-flex w-full h-full rounded-full bg-red-500 opacity-75 animate-ping'></span>
                         <span className='relative inline-flex w-2 h-2 rounded-full bg-red-500'></span>
@@ -22,9 +22,9 @@ const Hero = () => {
                 </p>
 
                 <h1 className='animate-fade-up [animation-delay:80ms] text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold text-black leading-[1.05] tracking-tight mb-8 max-w-6xl mx-auto'>
-                    Affordable, fast digital marketing and web development for{' '}
+                    Digital marketing and websites, made{' '}
                     <span className='relative inline-block'>
-                        <span className='relative z-10'>growing businesses</span>
+                        <span className='relative z-10'>affordable</span>
                         <span aria-hidden='true' className='absolute left-0 right-0 bottom-1 md:bottom-2 h-3 md:h-5 bg-red-500/80 -z-0 -rotate-1 rounded-sm'></span>
                     </span>
                 </h1>
