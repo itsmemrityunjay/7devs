@@ -27,4 +27,8 @@ async function start() {
   }
 }
 
-start()
+start().catch((err) => {
+  // Never leave reveal-hidden content invisible if the app fails to boot.
+  document.documentElement.classList.remove('js')
+  throw err
+})

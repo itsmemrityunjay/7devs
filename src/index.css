@@ -1,8 +1,90 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
   font-family: "Comfortaa", sans-serif;
+}
+
+::selection {
+  background: #ef4444;
+  color: #fff;
+}
+
+@layer components {
+  /* Faint grid behind headers, faded out towards the edges */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgb(0 0 0 / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(0 0 0 / 0.06) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  }
+  .bg-grid-dark {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.07) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  }
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1.5px currentColor;
+  }
+  .text-outline-white {
+    color: transparent;
+    -webkit-text-stroke: 1.5px #fff;
+  }
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+/* Soft floating glow */
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-30px, 20px) scale(1.08); }
+}
+.animate-float {
+  animation: float 12s ease-in-out infinite;
+}
+
+/* Hero entrance (CSS only, so it runs on the prerendered HTML too) */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+.animate-fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* Scroll reveal: only hides content when JS is running (html.js), see Layout */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-float,
+  .animate-fade-up {
+    animation: none;
+  }
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

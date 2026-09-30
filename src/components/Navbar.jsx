@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { SITE } from '../site'
+import { services } from '../content/services'
+import { ArrowRight, ArrowUpRight, ChevronDown, ServiceIcon } from './ui/Icons'
 
 const navItems = [
     { name: 'Services', to: '/services' },
@@ -32,6 +34,8 @@ const Navbar = () => {
     return (
         <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isMobileMenuOpen ? 'bg-white shadow-sm' : isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent'
             }`}>
+            {/* Thin red accent line once the page is scrolled */}
+            <div aria-hidden='true' className={`absolute bottom-0 left-0 h-px bg-red-500 transition-all duration-500 ${isScrolled && !isMobileMenuOpen ? 'w-full' : 'w-0'}`}></div>
             <div className='container mx-auto px-4'>
                 <div className='flex justify-between items-center h-20'>
                     {/* Logo */}
@@ -46,21 +50,52 @@ const Navbar = () => {
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <div className='hidden md:flex space-x-8'>
+                    <div className='hidden md:flex items-center space-x-8'>
                         {navItems.map((item) => (
-                            <NavLink
-                                key={item.to}
-                                to={item.to}
-                                className='text-black font-medium hover:opacity-70 transition-opacity relative group'
-                            >
-                                {item.name}
-                                <span className='absolute -bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full'></span>
-                            </NavLink>
+                            <div key={item.to} className={item.to === '/services' ? 'relative group/menu' : undefined}>
+                                <NavLink
+                                    to={item.to}
+                                    className='text-black font-medium hover:opacity-70 transition-opacity relative group inline-flex items-center gap-1 py-2'
+                                >
+                                    {({ isActive }) => (
+                                        <>
+                                            {item.name}
+                                            {item.to === '/services' && <ChevronDown className='w-4 h-4 transition-transform duration-300 group-hover/menu:rotate-180' />}
+                                            <span className={`absolute bottom-0 left-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full ${isActive ? 'w-full' : 'w-0'}`}></span>
+                                        </>
+                                    )}
+                                </NavLink>
+
+                                {/* Services dropdown: opens on hover and on keyboard focus */}
+                                {item.to === '/services' && (
+                                    <div className='absolute left-1/2 -translate-x-1/2 top-full pt-4 opacity-0 invisible translate-y-2 group-hover/menu:opacity-100 group-hover/menu:visible group-hover/menu:translate-y-0 group-focus-within/menu:opacity-100 group-focus-within/menu:visible group-focus-within/menu:translate-y-0 transition-all duration-300'>
+                                        <div className='w-[26rem] bg-white rounded-3xl shadow-2xl border border-gray-200 p-3'>
+                                            {services.map((s) => (
+                                                <Link key={s.slug} to={`/services/${s.slug}`} className='flex gap-4 items-start p-3 rounded-2xl hover:bg-gray-100 transition-colors group/item'>
+                                                    <span className='w-10 h-10 shrink-0 rounded-xl bg-black text-white flex items-center justify-center group-hover/item:bg-red-500 transition-colors'>
+                                                        <ServiceIcon slug={s.slug} className='w-5 h-5' />
+                                                    </span>
+                                                    <span>
+                                                        <span className='block font-bold text-black text-sm'>{s.name}</span>
+                                                        <span className='block text-xs text-gray-600 leading-relaxed mt-1'>{s.short}</span>
+                                                    </span>
+                                                </Link>
+                                            ))}
+                                            <Link to='/services' className='flex items-center justify-between mt-1 px-3 py-3 rounded-2xl bg-gray-100 text-sm font-bold text-black hover:bg-black hover:text-white transition-colors'>
+                                                All services <ArrowRight />
+                                            </Link>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
                         ))}
                     </div>
 
                     {/* Contact Button */}
-                    <Link to='/contact' className='hidden md:block bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors'>CONTACT</Link>
+                    <Link to='/contact' className='group/cta hidden md:inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-red-500 transition-colors'>
+                        CONTACT
+                        <ArrowUpRight className='w-4 h-4 transition-transform duration-300 group-hover/cta:rotate-45' />
+                    </Link>
 
                     {/* Mobile Menu Button */}
                     <button
@@ -84,14 +119,16 @@ const Navbar = () => {
                     }`}>
                     <div className='h-full flex flex-col justify-between p-6 bg-white'>
                         {/* Navigation Items */}
-                        <div className='flex flex-col justify-evenly flex-1 pt-8 pb-8'>
-                            {navItems.map((item) => (
+                        <div className='flex flex-col justify-evenly flex-1 pt-4 pb-8'>
+                            {navItems.map((item, i) => (
                                 <Link
                                     key={item.to}
                                     to={item.to}
                                     tabIndex={isMobileMenuOpen ? 0 : -1}
-                                    className='text-black font-bold text-3xl hover:text-gray-600 transition-colors text-left'
+                                    style={{ transitionDelay: isMobileMenuOpen ? `${i * 50}ms` : '0ms' }}
+                                    className={`flex items-baseline gap-4 border-b border-gray-200 pb-3 text-black font-bold text-3xl hover:text-red-500 transition-all duration-500 text-left ${isMobileMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
                                 >
+                                    <span className='text-xs font-medium text-gray-500'>0{i + 1}</span>
                                     {item.name}
                                 </Link>
                             ))}

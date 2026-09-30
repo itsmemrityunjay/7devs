@@ -3,7 +3,10 @@ import Seo from '../seo/Seo'
 import PageHeader from '../components/ui/PageHeader'
 import Faq, { faqSchema } from '../components/ui/Faq'
 import CtaBand from '../components/ui/CtaBand'
+import Button from '../components/ui/Button'
+import { ArrowUpRight, Check, ServiceIcon } from '../components/ui/Icons'
 import { PRICE } from '../content/services'
+import { waLink } from '../site'
 
 const crumbs = [{ name: 'Pricing', path: '/pricing' }]
 
@@ -71,34 +74,66 @@ const Pricing = () => (
         />
         <PageHeader
             crumbs={crumbs}
+            eyebrow='Pricing'
             h1='Pricing that small businesses can plan around'
             intro='Every package shows exactly what you get. Third-party costs like ad spend, Shopify subscriptions and hosting are separate and paid directly by you.'
-        />
-        <section className='pb-20 bg-white'>
+        >
+            {/* Jump links to each service's packages */}
+            <nav aria-label='Jump to a service' className='flex flex-wrap gap-3'>
+                {groups.map((g) => (
+                    <a key={g.slug} href={`#${g.slug}`} className='inline-flex items-center gap-2 rounded-full bg-gray-100 hover:bg-black hover:text-white pl-2 pr-4 py-2 text-sm font-medium transition-colors group'>
+                        <span className='w-7 h-7 rounded-full bg-white text-black flex items-center justify-center group-hover:bg-red-500 group-hover:text-white transition-colors'>
+                            <ServiceIcon slug={g.slug} className='w-4 h-4' />
+                        </span>
+                        {g.name}
+                    </a>
+                ))}
+            </nav>
+        </PageHeader>
+        <section className='pb-24 bg-white'>
             <div className='container mx-auto px-4'>
-                <div className='max-w-6xl mx-auto space-y-16'>
+                <div className='max-w-6xl mx-auto space-y-6'>
                     {groups.map((g) => (
-                        <div key={g.slug}>
-                            <h2 className='text-3xl md:text-4xl font-bold text-black mb-2'>
-                                <Link to={`/services/${g.slug}`} className='hover:text-red-500 transition-colors'>{g.name}</Link>
-                            </h2>
-                            <p className='text-gray-600 mb-6'>{g.note}</p>
-                            <div className='grid md:grid-cols-2 gap-6'>
-                                {g.packages.map((p, i) => (
-                                    <div key={p.name} className={`${i === 0 ? 'bg-gray-200 text-black' : 'bg-black text-white'} rounded-3xl p-8`}>
-                                        <h3 className='text-2xl font-bold mb-1'>{p.name}</h3>
-                                        <p className='text-3xl font-extrabold mb-1'>{p.price}</p>
-                                        <p className='text-sm opacity-70 mb-6'>{g.unit}</p>
-                                        <ul className='space-y-2'>
-                                            {p.items.map((it) => (
-                                                <li key={it} className='flex gap-3'>
-                                                    <span aria-hidden='true' className='mt-2 w-2 h-2 rounded-full bg-red-500 shrink-0'></span>
-                                                    <span>{it}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                ))}
+                        <div key={g.slug} id={g.slug} data-reveal className='scroll-mt-28 grid lg:grid-cols-[18rem_1fr] gap-6 rounded-[2.5rem] bg-gray-100 p-4 md:p-6'>
+                            <div className='p-4 flex flex-col'>
+                                <span className='w-12 h-12 rounded-2xl bg-black text-white flex items-center justify-center mb-6'>
+                                    <ServiceIcon slug={g.slug} />
+                                </span>
+                                <h2 className='text-2xl md:text-3xl font-bold text-black mb-3'>{g.name}</h2>
+                                <p className='text-gray-600 text-sm leading-relaxed mb-6'>{g.note}</p>
+                                <Link to={`/services/${g.slug}`} className='mt-auto inline-flex items-center gap-2 text-sm font-bold text-black hover:text-red-500 transition-colors group'>
+                                    Full service details <ArrowUpRight className='w-4 h-4 transition-transform duration-300 group-hover:rotate-45' />
+                                </Link>
+                            </div>
+                            <div className='grid md:grid-cols-2 gap-4'>
+                                {g.packages.map((p, i) => {
+                                    const dark = i === 1
+                                    return (
+                                        <div key={p.name} className={`flex flex-col rounded-3xl p-8 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 ${dark ? 'bg-black text-white' : 'bg-white text-black'}`}>
+                                            <h3 className='text-sm uppercase tracking-widest font-bold mb-4 opacity-70'>{p.name}</h3>
+                                            <p className='text-3xl md:text-4xl font-extrabold mb-1'>{p.price}</p>
+                                            <p className='text-sm opacity-60 mb-6'>{g.unit}</p>
+                                            <ul className={`space-y-3 border-t pt-6 mb-8 ${dark ? 'border-white/15' : 'border-gray-200'}`}>
+                                                {p.items.map((it) => (
+                                                    <li key={it} className='flex gap-3 text-sm leading-relaxed'>
+                                                        <span aria-hidden='true' className='mt-0.5 w-5 h-5 rounded-full bg-red-500 text-white flex items-center justify-center shrink-0'>
+                                                            <Check className='w-3 h-3' />
+                                                        </span>
+                                                        <span>{it}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                            <Button
+                                                href={waLink(`Hi! I am interested in the ${g.name} ${p.name} package.`)}
+                                                variant={dark ? 'white' : 'solid'}
+                                                arrow
+                                                className='mt-auto'
+                                            >
+                                                Ask about {p.name}
+                                            </Button>
+                                        </div>
+                                    )
+                                })}
                             </div>
                         </div>
                     ))}

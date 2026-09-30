@@ -43,17 +43,20 @@ const Legal = ({ path }) => {
     return (
         <>
             <Seo title={d.title} description={d.description} path={path} crumbs={crumbs} />
-            <PageHeader crumbs={crumbs} h1={d.h1} intro='Last updated: [ADD DATE]. This is a plain-language draft and should be reviewed by a lawyer.' />
-            <section className='pb-20 bg-white'>
+            <PageHeader crumbs={crumbs} eyebrow='Legal' h1={d.h1} intro='Last updated: [ADD DATE]. This is a plain-language draft and should be reviewed by a lawyer.' />
+            <section className='pb-24 bg-white'>
                 <div className='container mx-auto px-4'>
-                    <div className='max-w-3xl mx-auto'>
-                        {d.sections.map(([h, t]) => (
-                            <div key={h} className='mb-8'>
-                                <h2 className='text-2xl font-bold text-black mb-2'>{h}</h2>
-                                <p className='text-gray-700 leading-relaxed'>{t}</p>
-                            </div>
+                    <ol className='max-w-4xl mx-auto space-y-4'>
+                        {d.sections.map(([h, t], i) => (
+                            <li key={h} data-reveal className='grid sm:grid-cols-[4rem_1fr] gap-2 sm:gap-6 rounded-3xl border border-gray-200 p-6 md:p-8 hover:border-black transition-colors'>
+                                <span aria-hidden='true' className='text-3xl font-extrabold text-red-500'>{String(i + 1).padStart(2, '0')}</span>
+                                <div>
+                                    <h2 className='text-xl md:text-2xl font-bold text-black mb-2'>{h}</h2>
+                                    <p className='text-gray-700 leading-relaxed'>{t}</p>
+                                </div>
+                            </li>
                         ))}
-                    </div>
+                    </ol>
                 </div>
             </section>
         </>

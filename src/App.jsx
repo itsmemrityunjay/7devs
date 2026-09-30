@@ -15,7 +15,7 @@ const App = () => (
   <Suspense fallback={null}>
     <Routes>
       <Route element={<Layout />}>
-        {routes.map((r) => <Route key={r.path} path={r.path} element={<RouteView route={r} />} />)}
+        {routes.map((r) => <Route key={r.path} path={r.path} element={<RouteView key={r.path} route={r} />} />)}
       </Route>
     </Routes>
   </Suspense>
