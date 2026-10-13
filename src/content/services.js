@@ -1,6 +1,14 @@
-// Service page content. Prices are placeholders by design (see PRICE).
+// Service page content.
+// Prices: social, Meta ads, website revamp and the two growth plans come from the 7Devs Pricing & Packages 2026 PDF.
+// Shopify and web app prices are ESTIMATES, not from the PDF: confirm them before launch.
 // Timelines are working estimates: confirm them before launch.
-export const PRICE = '[ADD PRICE]'
+export const startingPrice = {
+  'social-media-management': '₹14,000/month',
+  'meta-ads': '₹16,000/month',
+  'shopify-website-development': '₹25,000',
+  'website-development': '₹12,000',
+  'digital-marketing': '₹24,000/month',
+}
 
 export const services = [
   {

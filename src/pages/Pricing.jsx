@@ -5,51 +5,54 @@ import Faq, { faqSchema } from '../components/ui/Faq'
 import CtaBand from '../components/ui/CtaBand'
 import Button from '../components/ui/Button'
 import { ArrowUpRight, Check, ServiceIcon } from '../components/ui/Icons'
-import { PRICE } from '../content/services'
 import { waLink } from '../site'
 
 const crumbs = [{ name: 'Pricing', path: '/pricing' }]
 
-// Package scopes are drafts: numbers and prices are placeholders for the owner to fill.
+// Prices for social, Meta ads, website revamp and the growth plans are from the 7Devs Pricing & Packages 2026 PDF.
+// Shopify and web app prices are ESTIMATES (not in the PDF): confirm before launch.
 const groups = [
     {
         slug: 'social-media-management',
         name: 'Social Media Management',
-        unit: 'per month',
-        note: 'Instagram and Facebook. Ad spend is not included.',
+        note: 'Instagram and Facebook. For brands that want a strong, consistent presence through quality content and planning. Ad spend is not included.',
         packages: [
-            { name: 'Starter', price: PRICE, items: ['[ADD NUMBER] static posts or carousels per month', '[ADD NUMBER] reels per month', 'Content calendar and your approval', 'Captions, hashtags, scheduling', 'Monthly report'] },
-            { name: 'Growth', price: PRICE, items: ['[ADD NUMBER] static posts or carousels per month', '[ADD NUMBER] reels per month', 'Comment and DM replies in agreed hours', 'Profile clean-up', 'Monthly report and review call'] },
+            { name: 'Social Media Management', price: '₹14,000', unit: 'starting price per month', dark: true, items: ['8–10 social media creatives', '5–6 reels', 'Remaining static or product creatives', 'Content optimised for Instagram and Facebook', 'Monthly content planning and trend-based direction', 'Engagement-focused strategy', 'Monthly report: reach, engagement, growth'] },
         ],
     },
     {
         slug: 'meta-ads',
         name: 'Meta Ads Management',
-        unit: 'per month, plus your ad spend paid to Meta',
-        note: 'Ad spend is paid directly by you to Meta.',
+        note: 'For brands that want to scale through structured campaigns and data-driven decisions. Ad spend is paid directly by you to Meta.',
         packages: [
-            { name: 'Starter', price: PRICE, items: ['Pixel and tracking setup or audit', 'Up to [ADD NUMBER] active campaigns', '[ADD NUMBER] new ad creatives per month', 'Weekly optimisation', 'Fortnightly report'] },
-            { name: 'Growth', price: PRICE, items: ['Everything in Starter', 'Up to [ADD NUMBER] active campaigns', '[ADD NUMBER] new ad creatives per month', 'Retargeting setup', 'Weekly report and call'] },
+            { name: 'Meta Ads Management', price: '₹16,000', unit: 'starting price per month, plus your ad spend', dark: true, items: ['Campaign creation and setup', 'Audience targeting and structuring', 'Ad scheduling and execution', 'Funnel-based planning, from awareness to conversion', 'Creative testing and A/B testing of audiences and creatives', 'Budget optimisation and performance scaling', 'Monthly report: ROAS, CPA, CTR, conversions'] },
+        ],
+    },
+    {
+        slug: 'digital-marketing',
+        name: 'Growth Plans',
+        note: 'Content and Meta ads together, so your creatives and your ads work as one system. Ad spend is paid directly by you to Meta.',
+        packages: [
+            { name: 'Growth Starter', price: '₹24,000', unit: 'starting price per month', items: ['12–14 creatives and 6–7 reels per month', 'Product, lifestyle and promotional creatives', 'Content calendar and posting structure', 'End-to-end Meta ads management', 'Creative testing and scaling of top performers', 'Bi-weekly ad reports and monthly analysis'] },
+            { name: 'Growth Accelerator', price: '₹34,000', unit: 'starting price per month', dark: true, items: ['20–22 creatives and 10–12 reels per month', 'Product, lifestyle and performance-focused creatives', 'Advanced growth and scaling strategy', 'Advanced campaign structuring and audience scaling', 'Multi-creative testing and budget optimisation', 'Weekly ad reports and detailed monthly analysis'] },
+        ],
+    },
+    {
+        slug: 'website-development',
+        name: 'Website Revamp & Web Apps',
+        note: 'Hosting, domain and third-party API costs are billed by those providers.',
+        packages: [
+            { name: 'Website Revamp', price: '₹12,000', unit: 'starting price', items: ['Requirement discussion and website structure', 'Clean, modern, custom layout', 'Brand-aligned colours and typography', 'Home, About, Services and Contact pages', 'Fast loading', 'Instagram and WhatsApp integration', 'Basic SEO: friendly URLs, meta titles and descriptions, image optimisation'] },
+            { name: 'Custom Web App', price: '₹50,000', unit: 'starting price, fixed quote after scoping', dark: true, items: ['Scoped feature list and fixed quote', 'MERN stack: MongoDB, Express, React, Node.js', 'User accounts and admin panel where needed', 'Milestone-based delivery', 'Code repository handover'] },
         ],
     },
     {
         slug: 'shopify-website-development',
         name: 'Shopify Website Development',
-        unit: 'one-time',
         note: "Shopify's own subscription and any paid apps or themes are billed separately by them.",
         packages: [
-            { name: 'Basic store', price: PRICE, items: ['Theme setup and branding', 'Up to [ADD NUMBER] products added', 'Payments and shipping setup', 'Essential pages and policies', 'Handover walkthrough'] },
-            { name: 'Growth store', price: PRICE, items: ['Everything in Basic', 'Up to [ADD NUMBER] products added', 'Extra collections and custom sections', 'Analytics and Meta Pixel connection', 'Basic on-page SEO'] },
-        ],
-    },
-    {
-        slug: 'website-development',
-        name: 'Custom Website & Web App',
-        unit: 'fixed quote after scoping',
-        note: 'Hosting, domain and third-party API costs are billed by those providers.',
-        packages: [
-            { name: 'Business website', price: PRICE, items: ['Custom-coded responsive site', '[ADD NUMBER] pages', 'Contact or enquiry form', 'Basic technical SEO', 'Deployment and handover'] },
-            { name: 'Web app', price: PRICE, items: ['Scoped feature list and fixed quote', 'MERN stack: MongoDB, Express, React, Node.js', 'User accounts and admin panel where needed', 'Milestone-based delivery', 'Code repository handover'] },
+            { name: 'Basic store', price: '₹25,000', unit: 'starting price, one-time', items: ['Theme setup and branding', 'Products added (number agreed in the quote)', 'Payments and shipping setup', 'Essential pages and policies', 'Mobile-responsive layout', 'Handover walkthrough'] },
+            { name: 'Growth store', price: '₹45,000', unit: 'starting price, one-time', dark: true, items: ['Everything in Basic store', 'Extra collections and custom sections', 'Product page and navigation optimisation', 'Analytics and Meta Pixel connection', 'Basic on-page SEO'] },
         ],
     },
 ]
@@ -59,14 +62,14 @@ const faqs = [
     { q: 'Do I need to sign a long contract?', a: 'Monthly services can be cancelled with notice. Exact terms are shared with the quote.' },
     { q: 'Can a package be customised?', a: 'Yes. If you need more or less than a package, message us and we will quote a version that fits.' },
     { q: 'How do I pay?', a: 'Payment terms are shared with the quote. Project work is normally split into milestones, and monthly services are billed monthly.' },
-    { q: 'Do prices include GST?', a: '[ADD GST DETAILS]' },
+    { q: 'Do prices include GST?', a: 'Prices on this page are starting prices before GST. GST, where applicable, is shown separately on your quote.' },
 ]
 
 const Pricing = () => (
     <>
         <Seo
             title='Pricing: Clear Packages, No Surprises | 7Devs'
-            description='Transparent pricing for social media management, Meta ads, Shopify and website development. See what each package includes and what it does not.'
+            description='Starting prices for social media management, Meta ads, growth plans, Shopify and website development. See what each package includes.'
             path='/pricing'
             ogImage='pricing'
             crumbs={crumbs}
@@ -105,14 +108,14 @@ const Pricing = () => (
                                     Full service details <ArrowUpRight className='w-4 h-4 transition-transform duration-300 group-hover:rotate-45' />
                                 </Link>
                             </div>
-                            <div className='grid md:grid-cols-2 gap-4'>
-                                {g.packages.map((p, i) => {
-                                    const dark = i === 1
+                            <div className={`grid gap-4 ${g.packages.length > 1 ? 'md:grid-cols-2' : ''}`}>
+                                {g.packages.map((p) => {
+                                    const dark = p.dark
                                     return (
                                         <div key={p.name} className={`flex flex-col rounded-3xl p-8 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 ${dark ? 'bg-black text-white' : 'bg-white text-black'}`}>
                                             <h3 className='text-sm uppercase tracking-widest font-bold mb-4 opacity-70'>{p.name}</h3>
                                             <p className='text-3xl md:text-4xl font-extrabold mb-1'>{p.price}</p>
-                                            <p className='text-sm opacity-60 mb-6'>{g.unit}</p>
+                                            <p className='text-sm opacity-60 mb-6'>{p.unit}</p>
                                             <ul className={`space-y-3 border-t pt-6 mb-8 ${dark ? 'border-white/15' : 'border-gray-200'}`}>
                                                 {p.items.map((it) => (
                                                     <li key={it} className='flex gap-3 text-sm leading-relaxed'>
