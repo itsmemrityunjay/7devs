@@ -12,13 +12,14 @@ import Button from '../components/ui/Button'
 import { ArrowUpRight } from '../components/ui/Icons'
 import { generalFaqs } from '../content/faqs'
 import { posts } from '../content/posts'
+import { locations } from '../content/locations'
 
 const Home = () => {
     return (
         <>
             <Seo
-                title='7Devs: Affordable Digital Marketing & Web Dev'
-                description='Affordable, fast social media, Meta ads, Shopify and website development for small businesses and D2C brands in India. Clear scope and pricing.'
+                title='Digital Marketing Agency in India | 7Devs'
+                description='7Devs is a digital marketing agency in India: social media, Meta ads, SEO, Amazon, Flipkart, Shopify and web development for D2C brands. Clear pricing.'
                 path='/'
                 schema={[faqSchema(generalFaqs)]}
             />
@@ -53,6 +54,19 @@ const Home = () => {
                                         </span>
                                     </Link>
                                 </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section className='py-16 bg-white'>
+                <div className='container mx-auto px-4'>
+                    <div className='max-w-6xl mx-auto'>
+                        <h2 className='text-2xl md:text-3xl font-bold text-black mb-6'>Digital marketing across India</h2>
+                        <ul className='flex flex-wrap gap-3'>
+                            {locations.map((l) => (
+                                <li key={l.slug}><Link to={`/locations/${l.slug}`} className='inline-block rounded-full bg-gray-100 hover:bg-black hover:text-white px-5 py-2 text-sm font-medium transition-colors'>{l.name}</Link></li>
                             ))}
                         </ul>
                     </div>

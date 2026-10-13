@@ -27,6 +27,9 @@ export const ServiceIcon = ({ slug, className = 'w-6 h-6' }) => {
     'meta-ads': <><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1Z" /><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" /></>,
     'shopify-website-development': <><path d="M6 7h12l-1 13H7L6 7Z" /><path d="M9 7a3 3 0 0 1 6 0" /></>,
     'website-development': <><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 9h18M10 13l-2 2 2 2M14 13l2 2-2 2" /></>,
+    'seo-services': <><circle cx="11" cy="11" r="6" /><path d="m20 20-4.5-4.5" /></>,
+    'flipkart-account-management': <><path d="M5 8h14l-1 12H6L5 8Z" /><path d="M9 8a3 3 0 0 1 6 0" /></>,
+    'amazon-account-management': <><path d="M3 4h2l2.2 10.2a1 1 0 0 0 1 .8h8.6a1 1 0 0 0 1-.8L19 8H6.2" /><circle cx="9" cy="19" r="1" /><circle cx="17" cy="19" r="1" /></>,
     'digital-marketing': <><path d="M3 17l6-6 4 4 8-8" /><path d="M15 7h6v6" /></>,
   }
   return <svg {...base} className={className}>{paths[slug]}</svg>

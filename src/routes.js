@@ -1,6 +1,7 @@
 import { matchPath } from 'react-router-dom'
 import { services } from './content/services'
 import { posts } from './content/posts'
+import { locations } from './content/locations'
 
 // Each route lazy-loads its page (code splitting). `loaded` lets the server and the
 // client hydrate synchronously once the chunk for the current URL is in memory.
@@ -8,6 +9,8 @@ export const routes = [
   { path: '/', load: () => import('./pages/Home') },
   { path: '/services', load: () => import('./pages/Services') },
   { path: '/services/:slug', load: () => import('./pages/ServicePage') },
+  { path: '/locations', load: () => import('./pages/Locations') },
+  { path: '/locations/:slug', load: () => import('./pages/LocationPage') },
   { path: '/pricing', load: () => import('./pages/Pricing') },
   { path: '/work', load: () => import('./pages/Work') },
   { path: '/about', load: () => import('./pages/About') },
@@ -31,6 +34,7 @@ export const findRoute = (pathname) => routes.find((r) => matchPath({ path: r.pa
 // Every public URL that gets prerendered and listed in the sitemap.
 export const publicPaths = [
   '/', '/services', ...services.map((s) => `/services/${s.slug}`),
+  '/locations', ...locations.map((l) => `/locations/${l.slug}`),
   '/pricing', '/work', '/about', '/blog', ...posts.map((p) => `/blog/${p.slug}`),
   '/contact', '/faq', '/privacy-policy', '/terms',
 ]

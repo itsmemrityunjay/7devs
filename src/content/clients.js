@@ -54,7 +54,7 @@ export const clients = [
     slug: 'evren',
     name: 'Evren',
     type: 'Brand',
-    services: ['seo', 'meta-ads'],
+    services: ['seo-services', 'meta-ads'],
     study: {
       overview: 'For Evren we combined SEO, which brings in people already searching, with Meta ads, which reach new audiences.',
       scope: ['Search engine optimisation (SEO)', 'Meta ads'],
@@ -84,7 +84,7 @@ export const clients = [
     slug: 'elevn',
     name: 'Elevn',
     type: 'Brand',
-    services: ['amazon', 'meta-ads', 'social-media-management'],
+    services: ['amazon-account-management', 'meta-ads', 'social-media-management'],
     study: {
       overview: 'For Elevn we worked across three channels: Amazon, Meta ads and social media.',
       scope: ['Amazon marketplace support', 'Meta ads', 'Social media management'],
@@ -101,7 +101,3 @@ export const clients = [
 export const featured = clients.filter((c) => c.study)
 export const reviews = clients.filter((c) => c.review)
 
-// Services offered on the site have their own page; SEO and Amazon are shown as labels only.
-const extra = { seo: { name: 'SEO', icon: 'digital-marketing' }, amazon: { name: 'Amazon', icon: 'shopify-website-development' } }
-export const serviceLabel = (slug, byslug) => (byslug[slug] ? byslug[slug].name : extra[slug].name)
-export const serviceIcon = (slug) => (extra[slug] ? extra[slug].icon : slug)

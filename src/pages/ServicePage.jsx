@@ -7,7 +7,7 @@ import CtaBand from '../components/ui/CtaBand'
 import ClientProof from '../components/ClientProof'
 import { ArrowUpRight, Check, Cross, ServiceIcon } from '../components/ui/Icons'
 import NotFound from './NotFound'
-import { serviceBySlug, startingPrice } from '../content/services'
+import { serviceBySlug, startingPrice, offerPrice } from '../content/services'
 import { postBySlug } from '../content/posts'
 import { SITE, waLink } from '../site'
 
@@ -56,7 +56,7 @@ const ServicePage = () => {
                     <dt className='text-gray-400'>Included</dt><dd className='font-bold'>{s.included.length} items</dd>
                 </div>
                 <div className='flex justify-between gap-4'>
-                    <dt className='text-gray-400'>Starting from</dt><dd className='font-bold'>{startingPrice[s.slug]}</dd>
+                    <dt className='text-gray-400'>{startingPrice[s.slug] ? 'Starting from' : 'Pricing'}</dt><dd className='font-bold'>{startingPrice[s.slug] || 'Custom quote'}</dd>
                 </div>
             </dl>
         </div>
@@ -79,6 +79,7 @@ const ServicePage = () => {
                         serviceType: s.name,
                         areaServed: { '@type': 'Country', name: 'India' },
                         provider: { '@id': `${SITE.url}/#organization` },
+                        ...(offerPrice[s.slug] && { offers: { '@type': 'Offer', priceCurrency: 'INR', priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'INR', minPrice: offerPrice[s.slug] }, url: `${SITE.url}/pricing` } }),
                     },
                     faqSchema(s.faqs),
                 ]}
@@ -167,7 +168,7 @@ const ServicePage = () => {
                     <div data-reveal className='max-w-6xl mx-auto grid md:grid-cols-[1fr_auto] gap-10 items-center rounded-[2.5rem] border-2 border-black p-8 md:p-12'>
                         <div>
                             <Eyebrow>Pricing</Eyebrow>
-                            <h2 className='text-3xl md:text-5xl font-bold text-black mb-4'>Starting from {startingPrice[s.slug]}</h2>
+                            <h2 className='text-3xl md:text-5xl font-bold text-black mb-4'>{startingPrice[s.slug] ? `Starting from ${startingPrice[s.slug]}` : 'Custom quote after a short call'}</h2>
                             <p className='text-lg text-gray-700 leading-relaxed max-w-2xl'>{s.pricingText}</p>
                         </div>
                         <Button to='/pricing' variant='outline'>See all packages</Button>

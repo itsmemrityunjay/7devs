@@ -3,7 +3,7 @@ import PageHeader from '../components/ui/PageHeader'
 import CtaBand from '../components/ui/CtaBand'
 import { ServiceIcon } from '../components/ui/Icons'
 import { serviceBySlug } from '../content/services'
-import { clients, featured, serviceLabel, serviceIcon } from '../content/clients'
+import { clients, featured } from '../content/clients'
 
 const crumbs = [{ name: 'Work', path: '/work' }]
 
@@ -34,8 +34,8 @@ const Work = () => (
                                     <ul className='mt-5 flex flex-wrap gap-2'>
                                         {c.services.map((s) => (
                                             <li key={s} className='inline-flex items-center gap-2 text-xs uppercase tracking-wide border border-white/20 rounded-full pl-1 pr-3 py-1'>
-                                                <span className='w-6 h-6 rounded-full bg-white text-black flex items-center justify-center'><ServiceIcon slug={serviceIcon(s)} className='w-3.5 h-3.5' /></span>
-                                                {serviceLabel(s, serviceBySlug)}
+                                                <span className='w-6 h-6 rounded-full bg-white text-black flex items-center justify-center'><ServiceIcon slug={s} className='w-3.5 h-3.5' /></span>
+                                                {serviceBySlug[s].name}
                                             </li>
                                         ))}
                                     </ul>

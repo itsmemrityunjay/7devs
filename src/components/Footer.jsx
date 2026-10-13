@@ -53,6 +53,7 @@ const Footer = () => {
                         <nav aria-label='Company'>
                             <h2 className='text-sm uppercase tracking-widest text-gray-500 font-bold mb-5'>Company</h2>
                             <ul className='space-y-3 text-gray-600'>
+                                <li><Link to='/locations' className={linkCls}>Locations</Link></li>
                                 <li><Link to='/pricing' className={linkCls}>Pricing</Link></li>
                                 <li><Link to='/work' className={linkCls}>Work</Link></li>
                                 <li><Link to='/about' className={linkCls}>About</Link></li>

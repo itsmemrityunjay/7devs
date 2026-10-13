@@ -8,7 +8,7 @@ export const abs = (path) => (path === '/' ? `${SITE.url}/` : `${SITE.url}${path
 
 export function organizationSchema() {
   return {
-    '@type': 'Organization',
+    '@type': ['Organization', 'ProfessionalService'],
     '@id': `${SITE.url}/#organization`,
     name: SITE.name,
     url: SITE.url,
@@ -16,6 +16,9 @@ export function organizationSchema() {
     email: SITE.email,
     telephone: SITE.phoneTel,
     sameAs: [SITE.instagram],
+    description: 'Digital marketing agency in India offering social media management, Meta ads, SEO, Amazon and Flipkart account management, Shopify and custom website development.',
+    areaServed: { '@type': 'Country', name: 'India' },
+    knowsAbout: ['Digital marketing', 'Social media management', 'Meta ads', 'SEO', 'Amazon account management', 'Flipkart account management', 'Shopify development', 'Website development'],
     contactPoint: [{
       '@type': 'ContactPoint',
       contactType: 'sales',
@@ -38,6 +41,7 @@ export function buildHead({ title, description, path, ogImage = 'default', type 
       '@id': `${SITE.url}/#website`,
       url: SITE.url,
       name: SITE.name,
+      inLanguage: 'en-IN',
       publisher: { '@id': `${SITE.url}/#organization` },
     })
   }
@@ -55,7 +59,9 @@ export function buildHead({ title, description, path, ogImage = 'default', type 
   const tags = [
     `<meta data-seo name="description" content="${esc(description)}" />`,
     `<link data-seo rel="canonical" href="${url}" />`,
-    noindex ? `<meta data-seo name="robots" content="noindex, follow" />` : '',
+    `<link data-seo rel="alternate" hreflang="en-IN" href="${url}" />`,
+    `<link data-seo rel="alternate" hreflang="x-default" href="${url}" />`,
+    `<meta data-seo name="robots" content="${noindex ? "noindex, follow" : "index, follow, max-image-preview:large, max-snippet:-1"}" />`,
     `<meta data-seo property="og:site_name" content="${SITE.name}" />`,
     `<meta data-seo property="og:type" content="${type}" />`,
     `<meta data-seo property="og:title" content="${esc(title)}" />`,
@@ -64,6 +70,7 @@ export function buildHead({ title, description, path, ogImage = 'default', type 
     `<meta data-seo property="og:image" content="${image}" />`,
     `<meta data-seo property="og:image:width" content="1200" />`,
     `<meta data-seo property="og:image:height" content="630" />`,
+    `<meta data-seo property="og:image:alt" content="${esc(title)}" />`,
     `<meta data-seo property="og:locale" content="en_IN" />`,
     `<meta data-seo name="twitter:card" content="summary_large_image" />`,
     `<meta data-seo name="twitter:title" content="${esc(title)}" />`,

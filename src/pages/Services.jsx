@@ -14,8 +14,8 @@ const places = ['Chandigarh', 'Delhi', 'Mumbai', 'Noida', 'Gurgaon', 'Surat', 'B
 const Services = () => (
     <>
         <Seo
-            title='Digital Marketing & Web Services | 7Devs'
-            description='Social media management, Meta ads, Shopify and custom website development for small businesses in India. Compare services and start where it counts.'
+            title='Digital Marketing, SEO & Web Services | 7Devs'
+            description='Social media, Meta ads, SEO, Amazon, Flipkart, Shopify and website development for brands in India. Compare services and start where it counts.'
             path='/services'
             ogImage='services'
             crumbs={crumbs}
@@ -24,7 +24,7 @@ const Services = () => (
             crumbs={crumbs}
             eyebrow='Services'
             h1='Digital marketing and web development services for small businesses'
-            intro='Five services, each with a clear scope and package. Start with the one that fixes your biggest problem, then add the next when you are ready. We are remote-first and work with businesses across India.'
+            intro={`${services.length} services, each with a clear scope and package. Start with the one that fixes your biggest problem, then add the next when you are ready. We are remote-first and work with businesses across India.`}
         >
             <Button href={SITE.whatsapp} arrow>Not sure? Ask us on WhatsApp</Button>
         </PageHeader>
@@ -35,7 +35,7 @@ const Services = () => (
                 <h2 className='sr-only'>Choose a service</h2>
                 <ul className='max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
                     {services.map((s, i) => {
-                        const dark = i === 0 || i === 4
+                        const dark = i === 0 || i === services.length - 1
                         return (
                             <li key={s.slug} data-reveal style={{ '--reveal-delay': `${(i % 3) * 80}ms` }} className={i === 0 ? 'lg:col-span-2' : ''}>
                                 <Link

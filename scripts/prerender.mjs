@@ -33,7 +33,9 @@ async function build(url, file) {
 for (const p of publicPaths) await build(p, p === '/' ? 'index.html' : `${p.slice(1)}/index.html`)
 await build('/404', '404.html')
 
-const urls = publicPaths.map((p) => `  <url><loc>${SITE.url}${p === '/' ? '/' : p}</loc></url>`).join('\n')
+const today = new Date().toISOString().slice(0, 10)
+const priority = (p) => (p === '/' ? '1.0' : p === '/services' || p.startsWith('/services/') || p === '/pricing' ? '0.9' : p.startsWith('/blog/') ? '0.6' : '0.7')
+const urls = publicPaths.map((p) => `  <url><loc>${SITE.url}${p === '/' ? '/' : p}</loc><lastmod>${today}</lastmod><priority>${priority(p)}</priority></url>`).join('\n')
 writeFileSync(join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`)
 writeFileSync(join(dist, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE.url}/sitemap.xml\n`)
 console.log(`Prerendered ${publicPaths.length} routes + 404, sitemap.xml, robots.txt`)

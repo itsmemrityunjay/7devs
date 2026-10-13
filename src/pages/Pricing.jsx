@@ -5,19 +5,19 @@ import Faq, { faqSchema } from '../components/ui/Faq'
 import CtaBand from '../components/ui/CtaBand'
 import Button from '../components/ui/Button'
 import { ArrowUpRight, Check, ServiceIcon } from '../components/ui/Icons'
+import { prices, inr } from '../content/services'
 import { waLink } from '../site'
 
 const crumbs = [{ name: 'Pricing', path: '/pricing' }]
 
-// Prices for social, Meta ads, website revamp and the growth plans are from the 7Devs Pricing & Packages 2026 PDF.
-// Shopify and web app prices are ESTIMATES (not in the PDF): confirm before launch.
+// Prices come from src/content/services.js (`prices`) so they match everywhere.
 const groups = [
     {
         slug: 'social-media-management',
         name: 'Social Media Management',
         note: 'Instagram and Facebook. For brands that want a strong, consistent presence through quality content and planning. Ad spend is not included.',
         packages: [
-            { name: 'Social Media Management', price: '₹14,000', unit: 'starting price per month', dark: true, items: ['8–10 social media creatives', '5–6 reels', 'Remaining static or product creatives', 'Content optimised for Instagram and Facebook', 'Monthly content planning and trend-based direction', 'Engagement-focused strategy', 'Monthly report: reach, engagement, growth'] },
+            { name: 'Social Media Management', price: inr(prices.social), unit: 'starting price per month', dark: true, items: ['8–10 posts per month, including 5–6 reels', 'The rest as static or product creatives', 'Content optimised for Instagram and Facebook', 'Monthly content planning and trend-based direction', 'Engagement-focused strategy', 'Monthly report: reach, engagement, growth'] },
         ],
     },
     {
@@ -25,7 +25,7 @@ const groups = [
         name: 'Meta Ads Management',
         note: 'For brands that want to scale through structured campaigns and data-driven decisions. Ad spend is paid directly by you to Meta.',
         packages: [
-            { name: 'Meta Ads Management', price: '₹16,000', unit: 'starting price per month, plus your ad spend', dark: true, items: ['Campaign creation and setup', 'Audience targeting and structuring', 'Ad scheduling and execution', 'Funnel-based planning, from awareness to conversion', 'Creative testing and A/B testing of audiences and creatives', 'Budget optimisation and performance scaling', 'Monthly report: ROAS, CPA, CTR, conversions'] },
+            { name: 'Meta Ads Management', price: inr(prices.meta), unit: 'starting price per month, plus your ad spend', dark: true, items: ['Campaign creation and setup', 'Audience targeting and structuring', 'Ad scheduling and execution', 'Funnel-based planning, from awareness to conversion', 'Creative testing and A/B testing of audiences and creatives', 'Budget optimisation and performance scaling', 'Monthly report: ROAS, CPA, CTR, conversions'] },
         ],
     },
     {
@@ -33,8 +33,8 @@ const groups = [
         name: 'Growth Plans',
         note: 'Content and Meta ads together, so your creatives and your ads work as one system. Ad spend is paid directly by you to Meta.',
         packages: [
-            { name: 'Growth Starter', price: '₹24,000', unit: 'starting price per month', items: ['12–14 creatives and 6–7 reels per month', 'Product, lifestyle and promotional creatives', 'Content calendar and posting structure', 'End-to-end Meta ads management', 'Creative testing and scaling of top performers', 'Bi-weekly ad reports and monthly analysis'] },
-            { name: 'Growth Accelerator', price: '₹34,000', unit: 'starting price per month', dark: true, items: ['20–22 creatives and 10–12 reels per month', 'Product, lifestyle and performance-focused creatives', 'Advanced growth and scaling strategy', 'Advanced campaign structuring and audience scaling', 'Multi-creative testing and budget optimisation', 'Weekly ad reports and detailed monthly analysis'] },
+            { name: 'Growth Starter', price: inr(prices.growthStarter), unit: 'starting price per month', items: ['12–14 posts per month, including 6–7 reels', 'Product, lifestyle and promotional creatives', 'Content calendar and posting structure', 'End-to-end Meta ads management', 'Creative testing and scaling of top performers', 'Bi-weekly ad reports and monthly analysis'] },
+            { name: 'Growth Accelerator', price: inr(prices.growthAccelerator), unit: 'starting price per month', dark: true, items: ['20–22 posts per month, including 10–12 reels', 'Product, lifestyle and performance-focused creatives', 'Advanced growth and scaling strategy', 'Advanced campaign structuring and audience scaling', 'Multi-creative testing and budget optimisation', 'Weekly ad reports and detailed monthly analysis'] },
         ],
     },
     {
@@ -42,8 +42,8 @@ const groups = [
         name: 'Website Revamp & Web Apps',
         note: 'Hosting, domain and third-party API costs are billed by those providers.',
         packages: [
-            { name: 'Website Revamp', price: '₹12,000', unit: 'starting price', items: ['Requirement discussion and website structure', 'Clean, modern, custom layout', 'Brand-aligned colours and typography', 'Home, About, Services and Contact pages', 'Fast loading', 'Instagram and WhatsApp integration', 'Basic SEO: friendly URLs, meta titles and descriptions, image optimisation'] },
-            { name: 'Custom Web App', price: '₹50,000', unit: 'starting price, fixed quote after scoping', dark: true, items: ['Scoped feature list and fixed quote', 'MERN stack: MongoDB, Express, React, Node.js', 'User accounts and admin panel where needed', 'Milestone-based delivery', 'Code repository handover'] },
+            { name: 'Website Revamp', price: inr(prices.websiteRevamp), unit: 'starting price', items: ['Requirement discussion and website structure', 'Clean, modern, custom layout', 'Brand-aligned colours and typography', 'Home, About, Services and Contact pages', 'Fast loading', 'Instagram and WhatsApp integration', 'Basic SEO: friendly URLs, meta titles and descriptions, image optimisation'] },
+            { name: 'Custom Web App', price: inr(prices.webApp), unit: 'starting price, fixed quote after scoping', dark: true, items: ['Scoped feature list and fixed quote', 'MERN stack: MongoDB, Express, React, Node.js', 'User accounts and admin panel where needed', 'Milestone-based delivery', 'Code repository handover'] },
         ],
     },
     {
@@ -51,8 +51,8 @@ const groups = [
         name: 'Shopify Website Development',
         note: "Shopify's own subscription and any paid apps or themes are billed separately by them.",
         packages: [
-            { name: 'Basic store', price: '₹25,000', unit: 'starting price, one-time', items: ['Theme setup and branding', 'Products added (number agreed in the quote)', 'Payments and shipping setup', 'Essential pages and policies', 'Mobile-responsive layout', 'Handover walkthrough'] },
-            { name: 'Growth store', price: '₹45,000', unit: 'starting price, one-time', dark: true, items: ['Everything in Basic store', 'Extra collections and custom sections', 'Product page and navigation optimisation', 'Analytics and Meta Pixel connection', 'Basic on-page SEO'] },
+            { name: 'Basic store', price: inr(prices.shopifyBasic), unit: 'starting price, one-time', items: ['Theme setup and branding', 'Products added (number agreed in the quote)', 'Payments and shipping setup', 'Essential pages and policies', 'Mobile-responsive layout', 'Handover walkthrough'] },
+            { name: 'Growth store', price: inr(prices.shopifyGrowth), unit: 'starting price, one-time', dark: true, items: ['Everything in Basic store', 'Extra collections and custom sections', 'Product page and navigation optimisation', 'Analytics and Meta Pixel connection', 'Basic on-page SEO'] },
         ],
     },
 ]

@@ -1,14 +1,29 @@
 // Service page content.
-// Prices: social, Meta ads, website revamp and the two growth plans come from the 7Devs Pricing & Packages 2026 PDF.
-// Shopify and web app prices are ESTIMATES, not from the PDF: confirm them before launch.
+// Prices live in `prices` below. Shopify prices are estimates, not from the PDF: confirm before launch.
 // Timelines are working estimates: confirm them before launch.
-export const startingPrice = {
-  'social-media-management': '₹14,000/month',
-  'meta-ads': '₹16,000/month',
-  'shopify-website-development': '₹25,000',
-  'website-development': '₹12,000',
-  'digital-marketing': '₹24,000/month',
+// Single source of truth for prices (INR). Pricing page, service pages and structured data all read from here.
+export const prices = {
+  social: 16000,
+  meta: 20000,
+  growthStarter: 26000,
+  growthAccelerator: 36000,
+  websiteRevamp: 15000,
+  webApp: 50000,
+  shopifyBasic: 25000,
+  shopifyGrowth: 45000,
 }
+export const inr = (n) => `₹${n.toLocaleString('en-IN')}`
+
+// Each service's headline "starting from" price.
+export const offerPrice = {
+  'social-media-management': prices.social,
+  'meta-ads': prices.meta,
+  'shopify-website-development': prices.shopifyBasic,
+  'website-development': prices.websiteRevamp,
+  'digital-marketing': prices.growthStarter,
+}
+const monthly = new Set(['social-media-management', 'meta-ads', 'digital-marketing'])
+export const startingPrice = Object.fromEntries(Object.entries(offerPrice).map(([k, v]) => [k, inr(v) + (monthly.has(k) ? '/month' : '')]))
 
 export const services = [
   {
@@ -216,6 +231,146 @@ export const services = [
     blog: 'shopify-vs-custom-website',
   },
   {
+    slug: 'seo-services',
+    name: 'SEO Services',
+    short: 'On-page and technical SEO so people searching for what you sell can find your website on Google.',
+    metaTitle: 'SEO Services in India for Small Businesses | 7Devs',
+    metaDescription: 'SEO services in India: keyword research, on-page and technical SEO, content and reporting to help your website get found on Google. See scope and process.',
+    h1: 'SEO services in India for small businesses and D2C brands',
+    intro: 'SEO is how people who are already searching for what you sell find your website on Google. We research the words your customers use, fix the technical and on-page issues that hold a site back, improve your page content, and report on what moved. It works best alongside Meta ads: ads reach new people, SEO captures people who are already looking.',
+    included: [
+      'Keyword research around what your customers actually search for',
+      'Technical SEO check: speed, mobile, indexing, sitemap, broken links',
+      'On-page SEO: titles, descriptions, headings, URLs, image alt text and internal links',
+      'Content recommendations for service, product and blog pages',
+      'Google Search Console and analytics setup or review',
+      'A monthly report on rankings, traffic and the changes we made',
+    ],
+    notIncluded: [
+      'Guaranteed rankings or a guaranteed number one position. No one can honestly promise this',
+      'Paid backlinks or link schemes that risk a Google penalty',
+      'Paid ad spend (that is our Meta ads service)',
+      'Building a new website from scratch (see website development)',
+    ],
+    process: [
+      { title: 'Audit', time: 'Week 1', text: 'We review your site, current search visibility and competitors, and list the fixes that matter most.' },
+      { title: 'Keyword plan', time: 'Week 1–2', text: 'We agree the search terms and pages to target, based on what your customers search and what you sell.' },
+      { title: 'Fix and optimise', time: 'Weeks 2–6', text: 'We apply technical fixes and improve titles, headings, content and internal links page by page.' },
+      { title: 'Content', time: 'Ongoing', text: 'We add or improve pages and articles that answer the questions your buyers ask.' },
+      { title: 'Report and refine', time: 'Monthly', text: 'A clear report on what changed and what we will do next. SEO results build over months, not days.' },
+    ],
+    forWho: [
+      'Businesses with a website that gets little or no traffic from Google',
+      'D2C brands that want steady search traffic alongside paid ads',
+      'Service businesses that want to be found for local and service searches',
+    ],
+    notForWho: [
+      'Anyone who needs results in a few days. SEO takes time',
+      'Anyone looking for guaranteed rankings or cheap link packages',
+    ],
+    pricingText: 'A monthly fee based on the size of your site and how competitive your search terms are. We share a custom quote after a short audit.',
+    faqs: [
+      { q: 'What are SEO services?', a: 'SEO (search engine optimisation) is the work of making your website easier for Google to understand and more useful to searchers, so it appears higher when people search for what you sell.' },
+      { q: 'How long does SEO take to work?', a: 'Usually a few months to see steady movement, longer for competitive terms. Anyone promising page-one results in days is not being honest.' },
+      { q: 'Can you guarantee the first position on Google?', a: 'No. No agency can, because Google decides rankings. We guarantee the work we do and report openly on the results.' },
+      { q: 'How much do SEO services cost in India?', a: 'It depends on the size of your site and how competitive your keywords are. We give a custom quote after a short audit.' },
+      { q: 'Should I do SEO or Meta ads?', a: 'They do different jobs. Ads bring quick traffic while you pay for them. SEO takes longer but keeps bringing visitors without a per-click cost. Many brands use both.' },
+      { q: 'Do you do local SEO?', a: 'Yes. We can optimise your pages and Google Business Profile for local searches, and tell you honestly how much it will help in your market.' },
+    ],
+    related: ['website-development', 'meta-ads', 'digital-marketing'],
+    blog: 'shopify-vs-custom-website',
+  },
+  {
+    slug: 'amazon-account-management',
+    name: 'Amazon Account Management',
+    short: 'Listings, content and advertising for brands selling on Amazon India.',
+    metaTitle: 'Amazon Account Management Services India | 7Devs',
+    metaDescription: 'Amazon account management in India: product listings, content, advertising and reporting to help your brand sell more on Amazon. See scope and process.',
+    h1: 'Amazon account management for brands selling in India',
+    intro: 'Selling on Amazon takes more than uploading products. Listings need clear titles and images, the catalogue needs to stay in good shape, and advertising needs regular attention. We help brands run their Amazon presence alongside their own website, social media and Meta ads, so the channels support each other.',
+    included: [
+      'Listing review and optimisation: titles, bullet points, descriptions and keywords',
+      'Product image and A+ content direction',
+      'Catalogue and inventory hygiene checks',
+      'Amazon advertising setup and optimisation',
+      'Regular reporting on sales, ad performance and next steps',
+    ],
+    notIncluded: [
+      'Guaranteed sales or rankings on Amazon',
+      'Product sourcing, stock or fulfilment',
+      'Ad spend, which is paid directly to Amazon',
+    ],
+    process: [
+      { title: 'Account review', time: 'Week 1', text: 'We review your seller account, listings and current performance, and agree the goals.' },
+      { title: 'Listing improvements', time: 'Weeks 1–3', text: 'We improve listing content and image direction for your key products.' },
+      { title: 'Advertising setup', time: 'Weeks 2–4', text: 'We set up and launch Amazon ad campaigns for the products that matter most.' },
+      { title: 'Optimise and report', time: 'Ongoing', text: 'We monitor performance, adjust listings and ads, and report on what to do next.' },
+    ],
+    forWho: [
+      'Brands already selling on Amazon that want better listings and ads',
+      'D2C brands adding Amazon alongside their own store',
+    ],
+    notForWho: [
+      'Sellers who want guaranteed best-seller status',
+      'Businesses that need warehousing or fulfilment services',
+    ],
+    pricingText: 'A custom quote based on the number of products and the scope you need. Ad spend is separate and paid to Amazon.',
+    faqs: [
+      { q: 'What does Amazon account management include?', a: 'Optimising your listings and content, keeping the catalogue in good shape, running Amazon advertising, and reporting on results.' },
+      { q: 'Can you guarantee more sales on Amazon?', a: 'No. We can improve how your listings and ads perform, but sales also depend on your product, price, reviews and competition.' },
+      { q: 'Do you handle Amazon advertising?', a: 'Yes. We set up and optimise Amazon ad campaigns. The ad spend itself is paid by you directly to Amazon.' },
+      { q: 'Can you combine Amazon with Meta ads and social media?', a: 'Yes. Running these channels together is something we do for brands, so your content and advertising support each other.' },
+      { q: 'How much does it cost?', a: 'We give a custom quote based on the number of products and the scope. Message us with your catalogue size.' },
+    ],
+    related: ['flipkart-account-management', 'meta-ads', 'social-media-management'],
+    blog: 'meta-ads-vs-google-ads-d2c',
+  },
+  {
+    slug: 'flipkart-account-management',
+    name: 'Flipkart Account Management',
+    short: 'Listings, content and advertising for brands selling on Flipkart.',
+    metaTitle: 'Flipkart Account Management Services India | 7Devs',
+    metaDescription: 'Flipkart account management in India: product listings, content, advertising and reporting to help your brand sell more on Flipkart. See scope and process.',
+    h1: 'Flipkart account management for brands selling in India',
+    intro: 'Flipkart is one of India\u2019s biggest marketplaces, and strong listings and steady advertising make a real difference to how your products show up. We help brands run their Flipkart presence alongside their own website, social media and Meta ads, so the channels support each other.',
+    included: [
+      'Listing review and optimisation: titles, descriptions, attributes and keywords',
+      'Product image and brand content direction',
+      'Catalogue and inventory hygiene checks',
+      'Flipkart advertising setup and optimisation',
+      'Regular reporting on sales, ad performance and next steps',
+    ],
+    notIncluded: [
+      'Guaranteed sales or rankings on Flipkart',
+      'Product sourcing, stock or fulfilment',
+      'Ad spend, which is paid directly to Flipkart',
+    ],
+    process: [
+      { title: 'Account review', time: 'Week 1', text: 'We review your seller account, listings and current performance, and agree the goals.' },
+      { title: 'Listing improvements', time: 'Weeks 1\u20133', text: 'We improve listing content and image direction for your key products.' },
+      { title: 'Advertising setup', time: 'Weeks 2\u20134', text: 'We set up and launch Flipkart ad campaigns for the products that matter most.' },
+      { title: 'Optimise and report', time: 'Ongoing', text: 'We monitor performance, adjust listings and ads, and report on what to do next.' },
+    ],
+    forWho: [
+      'Brands already selling on Flipkart that want better listings and ads',
+      'D2C brands adding Flipkart alongside their own store and Amazon',
+    ],
+    notForWho: [
+      'Sellers who want guaranteed best-seller status',
+      'Businesses that need warehousing or fulfilment services',
+    ],
+    pricingText: 'A custom quote based on the number of products and the scope you need. Ad spend is separate and paid to Flipkart.',
+    faqs: [
+      { q: 'What does Flipkart account management include?', a: 'Optimising your listings and content, keeping the catalogue in good shape, running Flipkart advertising, and reporting on results.' },
+      { q: 'Can you guarantee more sales on Flipkart?', a: 'No. We can improve how your listings and ads perform, but sales also depend on your product, price, reviews and competition.' },
+      { q: 'Do you handle Flipkart advertising?', a: 'Yes. We set up and optimise Flipkart ad campaigns. The ad spend itself is paid by you directly to Flipkart.' },
+      { q: 'Can you manage Amazon and Flipkart together?', a: 'Yes. Running both marketplaces with your own website, Meta ads and social media is something we do for brands, so each channel supports the others.' },
+      { q: 'How much does it cost?', a: 'We give a custom quote based on the number of products and the scope. Message us with your catalogue size.' },
+    ],
+    related: ['amazon-account-management', 'meta-ads', 'social-media-management'],
+    blog: 'meta-ads-vs-google-ads-d2c',
+  },
+  {
     slug: 'digital-marketing',
     name: 'Digital Marketing',
     short: 'Where to start and how the pieces fit: social media, Meta ads and your website working together.',
@@ -232,7 +387,7 @@ export const services = [
     notIncluded: [
       'A separate generic package. The work sits inside the individual services',
       'Guaranteed rankings, leads or sales',
-      'SEO retainers or influencer campaigns at this time',
+      'Influencer campaigns at this time',
     ],
     process: [
       { title: 'Free first call', time: 'Day 1', text: 'You tell us what you sell and what is not working. We ask about budget, current website and whether you already have customers.' },
@@ -253,11 +408,11 @@ export const services = [
       { q: 'What is the difference between digital marketing and social media management?', a: 'Digital marketing is the overall picture: website, social media, ads, search and more. Social media management is one part of it: creating and posting content on your social profiles.' },
       { q: 'Where should a small business start with digital marketing?', a: 'First make sure people have somewhere good to land: a working website or store or a clear WhatsApp enquiry flow. Then choose either steady content or paid ads, depending on how quickly you need enquiries.' },
       { q: 'How much do affordable digital marketing services cost?', a: 'It depends on which services you use. We list packages on the pricing page so you can compare them, and we do not add hidden fees.' },
-      { q: 'Do you offer SEO?', a: 'We build websites with technical SEO basics and write descriptive page content. We do not currently sell a standalone SEO retainer.' },
+      { q: 'Do you offer SEO?', a: 'Yes. We offer SEO services covering keyword research, on-page and technical SEO, and reporting. Every website we build also includes technical SEO basics.' },
       { q: 'Can I start with just one service?', a: 'Yes, and we recommend it. Start with the one that solves your biggest problem, then add more once it is working.' },
       { q: 'Do you need a big budget?', a: 'No. We work with small budgets. We will tell you honestly if a budget is too small for a particular goal.' },
     ],
-    related: ['social-media-management', 'meta-ads', 'shopify-website-development'],
+    related: ['social-media-management', 'meta-ads', 'seo-services'],
     blog: 'meta-ads-vs-google-ads-d2c',
   },
 ]

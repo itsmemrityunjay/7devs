@@ -22,7 +22,7 @@ const Hero = () => {
                 </p>
 
                 <h1 className='animate-fade-up [animation-delay:80ms] text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold text-black leading-[1.05] tracking-tight mb-8 max-w-6xl mx-auto'>
-                    Digital marketing and websites, made{' '}
+                    Digital marketing agency in India, made{' '}
                     <span className='relative inline-block'>
                         <span className='relative z-10'>affordable</span>
                         <span aria-hidden='true' className='absolute left-0 right-0 bottom-1 md:bottom-2 h-3 md:h-5 bg-red-500/80 -z-0 -rotate-1 rounded-sm'></span>
@@ -30,7 +30,7 @@ const Hero = () => {
                 </h1>
 
                 <p className='animate-fade-up [animation-delay:160ms] text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed mb-10'>
-                    Social media, Meta ads, Shopify stores and custom websites for small businesses, D2C brands and startups in India. Clear scope, clear pricing, no agency-premium bills.
+                    Social media, Meta ads, SEO, Amazon, Flipkart, Shopify stores and custom websites for small businesses, D2C brands and startups in India. Clear scope, clear pricing, no agency-premium bills.
                 </p>
 
                 <div className='animate-fade-up [animation-delay:240ms] flex flex-col sm:flex-row gap-4 justify-center mb-14'>

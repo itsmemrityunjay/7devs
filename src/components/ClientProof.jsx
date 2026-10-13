@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import Button from './ui/Button'
 import { ArrowUpRight } from './ui/Icons'
-import { clients, featured, serviceLabel } from '../content/clients'
+import { clients, featured } from '../content/clients'
 import { serviceBySlug } from '../content/services'
 
 // Real client proof from src/content/clients.js. Pass `service` to show the clients that used it.
@@ -35,7 +35,7 @@ const ClientProof = ({ dark = false, heading = 'Brands we work with', service })
                                         <p className='mt-6'><span className='font-extrabold text-4xl text-red-500'>{c.study.result.value}</span> <span className='opacity-70'>{c.study.result.label}</span></p>
                                     )}
                                 </div>
-                                <p className='mt-6 text-sm opacity-70'>{c.services.map((s) => serviceLabel(s, serviceBySlug)).join(' · ')}</p>
+                                <p className='mt-6 text-sm opacity-70'>{c.services.map((s) => serviceBySlug[s].name).join(' · ')}</p>
                                 <span className='mt-4 inline-flex items-center gap-2 text-sm font-bold group-hover:text-red-500 transition-colors'>
                                     Read case study <ArrowUpRight className='w-4 h-4 transition-transform duration-300 group-hover:rotate-45' />
                                 </span>
