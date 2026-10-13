@@ -191,25 +191,25 @@ const ServicePage = () => {
                         <ul className='grid md:grid-cols-2 lg:grid-cols-4 gap-6'>
                             {s.related.map((r, i) => (
                                 <li key={r} data-reveal style={{ '--reveal-delay': `${i * 70}ms` }}>
-                                    <Link to={`/services/${r}`} className='group flex flex-col h-full bg-white rounded-3xl p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-300'>
+                                    <div className='group relative flex flex-col h-full bg-white rounded-3xl p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-300'>
                                         <span className='w-12 h-12 rounded-2xl bg-black text-white flex items-center justify-center mb-6 group-hover:bg-red-500 transition-colors'>
                                             <ServiceIcon slug={r} />
                                         </span>
                                         <p className='text-xs uppercase tracking-wide text-gray-500 mb-2'>Service</p>
-                                        <h3 className='text-xl font-bold text-black mb-2'>{serviceBySlug[r].name}</h3>
+                                        <h3 className='text-xl font-bold text-black mb-2'><Link to={`/services/${r}`} className="after:absolute after:inset-0 after:content-['']">{serviceBySlug[r].name}</Link></h3>
                                         <p className='text-gray-600 text-sm flex-1'>{serviceBySlug[r].short}</p>
                                         <ArrowUpRight className='w-5 h-5 mt-6 text-black transition-transform duration-300 group-hover:rotate-45' />
-                                    </Link>
+                                    </div>
                                 </li>
                             ))}
                             {post && (
                                 <li data-reveal style={{ '--reveal-delay': '210ms' }}>
-                                    <Link to={`/blog/${post.slug}`} className='group flex flex-col h-full bg-black rounded-3xl p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-300'>
+                                    <div className='group relative flex flex-col h-full bg-black rounded-3xl p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-300'>
                                         <p className='text-xs uppercase tracking-wide text-red-500 mb-2 mt-[4.5rem]'>Blog · {post.readTime}</p>
-                                        <h3 className='text-xl font-bold text-white mb-2'>{post.title}</h3>
+                                        <h3 className='text-xl font-bold text-white mb-2'><Link to={`/blog/${post.slug}`} className="after:absolute after:inset-0 after:content-['']">{post.title}</Link></h3>
                                         <p className='text-gray-400 text-sm flex-1'>{post.excerpt}</p>
                                         <ArrowUpRight className='w-5 h-5 mt-6 text-white transition-transform duration-300 group-hover:rotate-45' />
-                                    </Link>
+                                    </div>
                                 </li>
                             )}
                         </ul>

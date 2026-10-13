@@ -87,14 +87,14 @@ const LocationPage = () => {
                         <ul className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
                             {services.map((s, i) => (
                                 <li key={s.slug} data-reveal style={{ '--reveal-delay': `${(i % 3) * 80}ms` }}>
-                                    <Link to={`/services/${s.slug}`} className='group flex flex-col h-full rounded-3xl bg-gray-100 p-8 hover:bg-black hover:-translate-y-1 transition-all duration-300'>
+                                    <div className='group relative flex flex-col h-full rounded-3xl bg-gray-100 p-8 hover:bg-black hover:-translate-y-1 transition-all duration-300'>
                                         <span className='w-12 h-12 rounded-2xl bg-black text-white group-hover:bg-red-500 flex items-center justify-center mb-6 transition-colors'><ServiceIcon slug={s.slug} /></span>
-                                        <h3 className='text-xl font-bold text-black group-hover:text-white mb-2 transition-colors'>{s.name} in {l.name}</h3>
+                                        <h3 className='text-xl font-bold text-black group-hover:text-white mb-2 transition-colors'><Link to={`/services/${s.slug}`} className="after:absolute after:inset-0 after:content-['']">{s.name} in {l.name}</Link></h3>
                                         <p className='text-gray-600 group-hover:text-gray-300 text-sm mb-6 transition-colors'>{s.short}</p>
                                         <span className='mt-auto inline-flex items-center gap-2 text-sm font-bold text-black group-hover:text-red-500 transition-colors'>
                                             {startingPrice[s.slug] ? `From ${startingPrice[s.slug]}` : 'Custom quote'} <ArrowUpRight className='w-4 h-4 transition-transform duration-300 group-hover:rotate-45' />
                                         </span>
-                                    </Link>
+                                    </div>
                                 </li>
                             ))}
                         </ul>

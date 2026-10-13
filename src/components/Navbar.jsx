@@ -39,7 +39,8 @@ const Navbar = () => {
             <div className='container mx-auto px-4'>
                 <div className='flex justify-between items-center h-20'>
                     {/* Logo */}
-                    <Link to='/' className='hover:opacity-70 transition-opacity' aria-label='7Devs home'>
+                    <Link to='/' className='hover:opacity-70 transition-opacity'>
+                        <span className='sr-only'>7Devs home</span>
                         <img
                             src={SITE.logo}
                             alt="7Devs"
@@ -71,15 +72,15 @@ const Navbar = () => {
                                     <div className='absolute left-1/2 -translate-x-1/2 top-full pt-4 opacity-0 invisible translate-y-2 group-hover/menu:opacity-100 group-hover/menu:visible group-hover/menu:translate-y-0 group-focus-within/menu:opacity-100 group-focus-within/menu:visible group-focus-within/menu:translate-y-0 transition-all duration-300'>
                                         <div className='w-[26rem] bg-white rounded-3xl shadow-2xl border border-gray-200 p-3'>
                                             {services.map((s) => (
-                                                <Link key={s.slug} to={`/services/${s.slug}`} className='flex gap-4 items-start p-3 rounded-2xl hover:bg-gray-100 transition-colors group/item'>
+                                                <div key={s.slug} className='relative flex gap-4 items-start p-3 rounded-2xl hover:bg-gray-100 transition-colors group/item'>
                                                     <span className='w-10 h-10 shrink-0 rounded-xl bg-black text-white flex items-center justify-center group-hover/item:bg-red-500 transition-colors'>
                                                         <ServiceIcon slug={s.slug} className='w-5 h-5' />
                                                     </span>
                                                     <span>
-                                                        <span className='block font-bold text-black text-sm'>{s.name}</span>
+                                                        <span className='block font-bold text-black text-sm'><Link to={`/services/${s.slug}`} className="after:absolute after:inset-0 after:content-['']">{s.name}</Link></span>
                                                         <span className='block text-xs text-gray-600 leading-relaxed mt-1'>{s.short}</span>
                                                     </span>
-                                                </Link>
+                                                </div>
                                             ))}
                                             <Link to='/services' className='flex items-center justify-between mt-1 px-3 py-3 rounded-2xl bg-gray-100 text-sm font-bold text-black hover:bg-black hover:text-white transition-colors'>
                                                 All services <ArrowRight />

@@ -43,16 +43,16 @@ const Home = () => {
                         <ul className='grid md:grid-cols-2 gap-6'>
                             {posts.map((p, i) => (
                                 <li key={p.slug} data-reveal style={{ '--reveal-delay': `${(i % 2) * 90}ms` }}>
-                                    <Link to={`/blog/${p.slug}`} className='group flex flex-col justify-between h-full min-h-[240px] bg-white rounded-3xl p-8 hover:bg-black hover:-translate-y-1 hover:shadow-2xl transition-all duration-300'>
+                                    <div className='group relative flex flex-col justify-between h-full min-h-[240px] bg-white rounded-3xl p-8 hover:bg-black hover:-translate-y-1 hover:shadow-2xl transition-all duration-300'>
                                         <div>
                                             <p className='text-xs uppercase tracking-wide text-gray-500 mb-4'>{p.readTime}</p>
-                                            <h3 className='text-xl md:text-2xl font-bold text-black group-hover:text-white mb-3 transition-colors'>{p.title}</h3>
+                                            <h3 className='text-xl md:text-2xl font-bold text-black group-hover:text-white mb-3 transition-colors'><Link to={`/blog/${p.slug}`} className="after:absolute after:inset-0 after:content-['']">{p.title}</Link></h3>
                                             <p className='text-gray-600 group-hover:text-gray-300 transition-colors'>{p.excerpt}</p>
                                         </div>
                                         <span className='mt-6 inline-flex items-center gap-2 text-sm font-bold text-black group-hover:text-red-500 transition-colors'>
-                                            Read article <ArrowUpRight className='w-4 h-4 transition-transform duration-300 group-hover:rotate-45' />
+                                            Read more <ArrowUpRight className='w-4 h-4 transition-transform duration-300 group-hover:rotate-45' />
                                         </span>
-                                    </Link>
+                                    </div>
                                 </li>
                             ))}
                         </ul>

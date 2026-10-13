@@ -21,16 +21,15 @@ const ClientProof = ({ dark = false, heading = 'Brands we work with', service })
                     </div>
                     <div className='grid gap-6 md:grid-cols-2'>
                         {shown.map((c, i) => (
-                            <Link
+                            <div
                                 key={c.slug}
-                                to={`/work#${c.slug}`}
                                 data-reveal
                                 style={{ '--reveal-delay': `${i * 90}ms` }}
-                                className={`group rounded-3xl p-8 flex flex-col justify-between min-h-[260px] border transition-all duration-300 hover:-translate-y-1 ${dark ? 'border-white/20 text-white hover:bg-white/5' : 'border-gray-200 text-black hover:shadow-2xl'}`}
+                                className={`group relative rounded-3xl p-8 flex flex-col justify-between min-h-[260px] border transition-all duration-300 hover:-translate-y-1 ${dark ? 'border-white/20 text-white hover:bg-white/5' : 'border-gray-200 text-black hover:shadow-2xl'}`}
                             >
                                 <div>
                                     <p className='text-xs uppercase tracking-wide opacity-60 mb-6'>{c.type}</p>
-                                    <p className='font-extrabold text-4xl mb-2'>{c.name}</p>
+                                    <p className='font-extrabold text-4xl mb-2'><Link to={`/work#${c.slug}`} className="after:absolute after:inset-0 after:content-['']">{c.name}</Link></p>
                                     {c.study.result && (
                                         <p className='mt-6'><span className='font-extrabold text-4xl text-red-500'>{c.study.result.value}</span> <span className='opacity-70'>{c.study.result.label}</span></p>
                                     )}
@@ -39,7 +38,7 @@ const ClientProof = ({ dark = false, heading = 'Brands we work with', service })
                                 <span className='mt-4 inline-flex items-center gap-2 text-sm font-bold group-hover:text-red-500 transition-colors'>
                                     Read case study <ArrowUpRight className='w-4 h-4 transition-transform duration-300 group-hover:rotate-45' />
                                 </span>
-                            </Link>
+                            </div>
                         ))}
                     </div>
                     <p className={`mt-10 text-sm ${dark ? 'text-gray-400' : 'text-gray-600'}`}>

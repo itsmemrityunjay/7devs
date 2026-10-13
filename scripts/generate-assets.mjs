@@ -10,6 +10,8 @@ console.log('logo.webp', m.width, m.height)
 writeFileSync('public/favicon.svg',
 `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#000"/><text x="32" y="44" font-family="Arial, sans-serif" font-size="38" font-weight="800" text-anchor="middle" fill="#fff">7</text><circle cx="49" cy="46" r="4" fill="#ef4444"/></svg>`)
 
+await sharp('public/favicon.svg', { density: 576 }).resize(180, 180).flatten({ background: '#000000' }).png().toFile('public/apple-touch-icon.png')
+
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
 function wrap(text, max) {
   const lines = []; let cur = ''

@@ -27,13 +27,13 @@ const Locations = () => (
                 <ul className='max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-4'>
                     {locations.map((l, i) => (
                         <li key={l.slug} data-reveal style={{ '--reveal-delay': `${(i % 3) * 70}ms` }}>
-                            <Link to={`/locations/${l.slug}`} className='group flex items-center justify-between rounded-3xl bg-gray-100 hover:bg-black p-8 transition-colors duration-300'>
+                            <div className='group relative flex items-center justify-between rounded-3xl bg-gray-100 hover:bg-black p-8 transition-colors duration-300'>
                                 <span>
-                                    <span className='block text-2xl font-bold text-black group-hover:text-white transition-colors'>{l.name}</span>
+                                    <span className='block text-2xl font-bold text-black group-hover:text-white transition-colors'><Link to={`/locations/${l.slug}`} className="after:absolute after:inset-0 after:content-['']">{l.name}</Link></span>
                                     <span className='block text-sm text-gray-600 group-hover:text-gray-300 transition-colors'>{l.area}</span>
                                 </span>
                                 <ArrowUpRight className='w-6 h-6 text-black group-hover:text-red-500 group-hover:rotate-45 transition-all duration-300' />
-                            </Link>
+                            </div>
                         </li>
                     ))}
                 </ul>

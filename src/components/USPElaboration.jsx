@@ -31,7 +31,8 @@ const USPElaboration = () => {
                             </div>
                             <div className='relative flex justify-between items-end gap-4'>
                                 <p className='text-gray-600 max-w-sm'>The same simple loop for every service, from a single store setup to a monthly retainer.</p>
-                                <Link to='/contact' aria-label='Start with step one: contact us' className='group w-14 h-14 shrink-0 bg-black rounded-full flex items-center justify-center hover:bg-red-500 transition-colors'>
+                                <Link to='/contact' className='group w-14 h-14 shrink-0 bg-black rounded-full flex items-center justify-center hover:bg-red-500 transition-colors'>
+                                    <span className='sr-only'>Start a project</span>
                                     <ArrowRight className='w-6 h-6 text-white transition-transform duration-300 group-hover:-rotate-45' />
                                 </Link>
                             </div>

@@ -38,20 +38,19 @@ const Services = () => (
                         const dark = i === 0 || i === services.length - 1
                         return (
                             <li key={s.slug} data-reveal style={{ '--reveal-delay': `${(i % 3) * 80}ms` }} className={i === 0 ? 'lg:col-span-2' : ''}>
-                                <Link
-                                    to={`/services/${s.slug}`}
+                                <div
                                     className={`group relative flex flex-col h-full min-h-[300px] rounded-3xl p-8 overflow-hidden hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 ${dark ? 'bg-black text-white' : 'bg-gray-100 text-black'}`}
                                 >
                                     <span aria-hidden='true' className='absolute -right-4 -top-6 text-[9rem] font-extrabold leading-none opacity-[0.06]'>0{i + 1}</span>
                                     <span className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-auto transition-colors ${dark ? 'bg-white text-black group-hover:bg-red-500 group-hover:text-white' : 'bg-black text-white group-hover:bg-red-500'}`}>
                                         <ServiceIcon slug={s.slug} className='w-7 h-7' />
                                     </span>
-                                    <h3 className='text-2xl md:text-3xl font-bold mt-10 mb-3'>{s.name}</h3>
+                                    <h3 className='text-2xl md:text-3xl font-bold mt-10 mb-3'><Link to={`/services/${s.slug}`} className="after:absolute after:inset-0 after:content-['']">{s.name}</Link></h3>
                                     <p className={`leading-relaxed mb-6 ${dark ? 'text-gray-400' : 'text-gray-600'}`}>{s.short}</p>
                                     <span className='inline-flex items-center gap-2 font-bold text-sm group-hover:text-red-500 transition-colors'>
                                         See scope, process and FAQ <ArrowUpRight className='w-4 h-4 transition-transform duration-300 group-hover:rotate-45' />
                                     </span>
-                                </Link>
+                                </div>
                             </li>
                         )
                     })}
