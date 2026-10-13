@@ -5,7 +5,7 @@ import Marquee from '../components/Marquee'
 import USPSection from '../components/USPSection'
 import USPElaboration from '../components/USPElaboration'
 import ServiceList from '../components/ServiceList'
-import ProofPlaceholder from '../components/ProofPlaceholder'
+import ClientProof from '../components/ClientProof'
 import Faq, { faqSchema } from '../components/ui/Faq'
 import CtaBand from '../components/ui/CtaBand'
 import Button from '../components/ui/Button'
@@ -27,7 +27,7 @@ const Home = () => {
             <USPSection />
             <USPElaboration />
             <ServiceList />
-            <ProofPlaceholder />
+            <ClientProof />
 
             <section id='blogs' className='py-24 bg-gray-100'>
                 <div className='container mx-auto px-4'>

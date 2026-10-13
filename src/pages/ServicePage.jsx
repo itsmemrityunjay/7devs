@@ -4,7 +4,7 @@ import PageHeader from '../components/ui/PageHeader'
 import Button from '../components/ui/Button'
 import Faq, { faqSchema } from '../components/ui/Faq'
 import CtaBand from '../components/ui/CtaBand'
-import ProofPlaceholder from '../components/ProofPlaceholder'
+import ClientProof from '../components/ClientProof'
 import { ArrowUpRight, Check, Cross, ServiceIcon } from '../components/ui/Icons'
 import NotFound from './NotFound'
 import { serviceBySlug } from '../content/services'
@@ -175,7 +175,7 @@ const ServicePage = () => {
                 </div>
             </section>
 
-            <ProofPlaceholder dark slots={2} heading={`${s.name} results`} />
+            <ClientProof dark service={s.slug} heading={`${s.name} for real brands`} />
 
             <Faq items={s.faqs} />
 
