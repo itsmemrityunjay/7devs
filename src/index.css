@@ -88,3 +88,70 @@ body {
     transition: none;
   }
 }
+
+/* Festive decoration (see src/components/Festive.jsx) */
+@keyframes fest-fall {
+  0% { transform: translate3d(0, -10vh, 0); }
+  50% { transform: translate3d(var(--sway, 30px), 50vh, 0); }
+  100% { transform: translate3d(0, 110vh, 0); }
+}
+@keyframes fest-rise {
+  0% { transform: translate3d(0, 105vh, 0) scale(.6); opacity: 0; }
+  12% { opacity: 1; }
+  60% { transform: translate3d(var(--sway, 30px), 40vh, 0) scale(1); opacity: .9; }
+  100% { transform: translate3d(calc(var(--sway, 30px) * -0.5), -8vh, 0) scale(.4); opacity: 0; }
+}
+@keyframes fest-lantern {
+  0% { transform: translate3d(0, 110vh, 0) rotate(-3deg); opacity: 0; }
+  8% { opacity: .95; }
+  50% { transform: translate3d(24px, 45vh, 0) rotate(3deg); }
+  90% { opacity: .8; }
+  100% { transform: translate3d(-12px, -20vh, 0) rotate(-2deg); opacity: 0; }
+}
+@keyframes fest-twinkle {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px 2px currentColor; }
+  50% { opacity: .35; box-shadow: 0 0 2px 0 currentColor; }
+}
+@keyframes fest-flicker {
+  0%, 100% { transform: scale(1, 1); }
+  35% { transform: scale(1.08, .94); }
+  70% { transform: scale(.95, 1.07); }
+}
+@keyframes fest-flutter {
+  0% { transform: rotate(0deg) rotateX(0deg); }
+  25% { transform: rotate(80deg) rotateX(65deg); }
+  50% { transform: rotate(170deg) rotateX(0deg); }
+  75% { transform: rotate(260deg) rotateX(-65deg); }
+  100% { transform: rotate(360deg) rotateX(0deg); }
+}
+@keyframes fest-swing { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+@keyframes fest-halo { 0%, 100% { opacity: .7; } 50% { opacity: 1; } }
+@keyframes fest-spin { to { transform: rotate(360deg); } }
+@keyframes fest-shimmer { to { background-position: 200% center; } }
+@keyframes fest-in {
+  from { opacity: 0; transform: translateY(24px) scale(.97); }
+  to { opacity: 1; transform: none; }
+}
+.fest-fall { top: 0; animation: fest-fall linear infinite; will-change: transform; }
+.fest-rise { top: 0; animation: fest-rise ease-out infinite; will-change: transform, opacity; }
+.fest-lantern { top: 0; animation: fest-lantern linear infinite; filter: drop-shadow(0 0 14px currentColor); will-change: transform; }
+.fest-twirl { display: block; width: 100%; height: 100%; animation: fest-spin 1.8s linear infinite; }
+.fest-flutter { display: block; width: 100%; height: 100%; animation: fest-flutter 5s ease-in-out infinite; }
+.fest-swing { transform-origin: 50% 0; animation: fest-swing 3.6s ease-in-out infinite; }
+.fest-spin-slow { animation: fest-spin 120s linear infinite; }
+.fest-bulb { animation: fest-twinkle 2.6s ease-in-out infinite; }
+.fest-flame { transform-box: fill-box; transform-origin: 50% 100%; animation: fest-flicker 1.2s ease-in-out infinite; }
+.fest-halo { animation: fest-halo 2.4s ease-in-out infinite; }
+.fest-card { animation: fest-in .7s cubic-bezier(.2, .7, .2, 1) both; }
+.fest-shimmer {
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: fest-shimmer 4s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fest-fall, .fest-rise, .fest-lantern { display: none; }
+  .fest-twirl, .fest-flutter, .fest-swing, .fest-spin-slow, .fest-bulb, .fest-flame, .fest-halo, .fest-card, .fest-shimmer { animation: none; }
+}
